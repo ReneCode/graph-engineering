@@ -4,7 +4,6 @@ node_js:
 
 script:
   - echo "build the application"
-  - yarn lint
   - yarn test
   - yarn build
 
