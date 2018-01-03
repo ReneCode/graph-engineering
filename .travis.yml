@@ -2,6 +2,9 @@ language: node_js
 node_js:
   - "8"
 
+before_script:
+  - npm install -g firebase-tools
+
 script:
   - echo "build the application"
   - yarn test
@@ -9,4 +12,4 @@ script:
 
 after_success:
   - echo "deploy the application"
-  - yarn firebase deploy --token $FIREBASE_TOKEN
+  - firebase deploy --token $FIREBASE_TOKEN
