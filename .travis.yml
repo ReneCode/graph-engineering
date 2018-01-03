@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "8"
+
+script:
+  - echo "build the application"
+  - yarn lint
+  - yarn test
+  - yarn build
+
+after_success:
+  - echo "deploy the application"
+  - npm run firebase -- deploy --token $FIREBASE_TOKEN
