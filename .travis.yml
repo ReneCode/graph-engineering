@@ -9,4 +9,4 @@ script:
 
 after_success:
   - echo "deploy the application"
-  - npm run firebase -- deploy --token $FIREBASE_TOKEN
+  - yarn firebase deploy --token $FIREBASE_TOKEN
