@@ -1,21 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider } from 'react-redux'
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+import purple from 'material-ui/colors/purple'
+import green from 'material-ui/colors/green'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to world of Graph-Engineering</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+import Routing from './components/Routing'
+import store from './store'
 
-export default App;
+/*eslint-disable no-unused-vars*/
+import firebase from './firebase'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: purple,
+    secondary: green,
+  },
+});
+
+const App = () => (
+  <MuiThemeProvider theme={ theme }>
+    <Provider store={ store }>
+      <Routing />
+    </Provider>
+  </MuiThemeProvider>
+)
+
+export default App
