@@ -12,14 +12,6 @@ script:
 
 
 deploy:
-  - firebase deploy --token $FIREBASE_TOKEN
-  on:
-    condition: $TRAVIS_BRANCH == "master"
-
-deploy:
   provider: azure_web_apps
   on:
     condition: $TRAVIS_BRANCH != "master"
-
-# after_success:
-#  - echo "deploy the application"
