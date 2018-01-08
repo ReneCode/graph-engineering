@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "8"
 
-before_script:
+install:
   - npm install -g firebase-tools
 
 script:
@@ -10,6 +10,16 @@ script:
   - yarn test
   - yarn build
 
-after_success:
-  - echo "deploy the application"
+
+deploy:
   - firebase deploy --token $FIREBASE_TOKEN
+  on:
+    condition: $TRAVIS_BRANCH == "master"
+
+deploy:
+  provider: azure_web_apps
+  on:
+    condition: $TRAVIS_BRANCH != "master"
+
+# after_success:
+#  - echo "deploy the application"
