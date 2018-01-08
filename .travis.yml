@@ -14,4 +14,4 @@ script:
 deploy:
   provider: azure_web_apps
   on:
-    condition: $TRAVIS_BRANCH != "master"
+    condition: NOT $TRAVIS_BRANCH = "master"
