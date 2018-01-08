@@ -12,5 +12,4 @@ script:
 
 
 deploy:
-  provider: azure_web_apps
-  if: NOT $TRAVIS_BRANCH = "master"
+  - firebase deploy --token $FIREBASE_TOKEN
