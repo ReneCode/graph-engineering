@@ -25,7 +25,7 @@ const Home = (props) => {
       <AppBar position="static">
         <Toolbar>
           <Typography type="title" color="inherit" className={ classes.flex }>
-            Graphical-Engineering
+            Graph-Engineering
           </Typography>
           <HomeUserMenu />
         </Toolbar>

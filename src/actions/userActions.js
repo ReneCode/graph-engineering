@@ -10,6 +10,14 @@ export const setUserAction = (id, email) => {
   }
 }
 
+export const registerUserAction = (email, password) => {
+  return {
+    type: actionTypes.REGISTER_USER,
+    email,
+    password
+  }
+}
+
 export const loginUserAction = (email, password) => {
   return {
     type: actionTypes.LOGIN_USER,

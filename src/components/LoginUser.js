@@ -26,24 +26,6 @@ class LoginUser extends Component {
 
   handleLogin = () => {
     this.props.loginUser(this.state.email, this.state.password)
-    
-    // // https://firebase.google.com/docs/auth/web/auth-state-persistence
-    // firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    //   .then(user => {
-    //     console.log("USER:", user)
-    //     if (user) {
-    //       this.props.setUser(user.uid, this.state.email)
-    //       this.setState({
-    //         open: false
-    //       })
-    //       this.props.history.push('/')
-    //     }
-    //   })
-    //   .catch(error => {
-    //     this.setState({
-    //       errorMessage: error.message
-    //     })
-    //   })
   }
 
   handleClose = () => {
