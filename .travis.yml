@@ -10,6 +10,5 @@ script:
   - yarn test
   - yarn build
 
-
-deploy:
+after_success:
   - firebase deploy --token $FIREBASE_TOKEN
