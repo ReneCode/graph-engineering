@@ -19,7 +19,7 @@ class HomeUserMenu extends Component {
           <Link to="/login">
           <Button color="contrast">Login</Button>
           </Link>
-          <Link to="/logout">
+          <Link to="/register">
           <Button color="contrast">Register</Button>
           </Link>
         </div>

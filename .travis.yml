@@ -11,5 +11,4 @@ script:
   - yarn build
 
 after_success:
-  - echo "deploy the application"
   - firebase deploy --token $FIREBASE_TOKEN
