@@ -7,8 +7,13 @@ import green from 'material-ui/colors/green'
 import Routing from './components/Routing'
 import store from './store'
 
-/*eslint-disable no-unused-vars*/
+import * as actions from './actions'
+
 import firebase from './firebase'
+
+firebase.auth().onAuthStateChanged(user => {
+  store.dispatch(actions.setUserAction(user.uid, user.email))
+})
 
 const theme = createMuiTheme({
   palette: {
