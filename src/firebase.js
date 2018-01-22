@@ -1,5 +1,7 @@
 
-import { firebase } from '@firebase/app'
+// import { firebase } from '@firebase/app'
+import firebase from 'firebase'
+require('firebase/firestore')
 
 const config = {
   apiKey: "AIzaSyDSzhfoYZtvJKUEMLc-RVvgZiP7j4MQVlA",
@@ -9,6 +11,10 @@ const config = {
   storageBucket: "graph-engineering.appspot.com",
   messagingSenderId: "213769611125"
 }
-firebase.initializeApp(config)
+const app = firebase.initializeApp(config)
+const db = firebase.firestore(app)
 
-export default firebase
+export { 
+  firebase,
+  app,
+  db }
