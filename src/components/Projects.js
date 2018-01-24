@@ -39,6 +39,10 @@ class Projects extends Component {
     })
   }
 
+  onOpenProject(projectId) {
+    this.props.history.push(`/projects/${projectId}`)
+  }
+
   render() {
     const classes = this.props.classes
     return (
@@ -46,13 +50,17 @@ class Projects extends Component {
         <AddProjectDialog open={ this.state.showAddProject } onClose={ this.onCloseAddProject.bind(this) } />
         <ProjectCard>
           <p></p>
-          <Button onClick={ this.onShowAddProject.bind(this)  } color="primary">
-          Add New Project
+          <Button onClick={ this.onShowAddProject.bind(this) } color="primary">
+            Add New Project
           </Button>
         </ProjectCard>
         { this.props.projects.map(project => {
             return (
-              <ProjectCard firstButton="open" secondButton="...">
+              <ProjectCard 
+                key={project.id}
+                firstButton="open" 
+                firstButtonClick={this.onOpenProject.bind(this, project.id)}
+                secondButton="...">
                 { project.name }
               </ProjectCard>
             )

@@ -31,7 +31,10 @@ class AddProjectDialog extends Component {
   onAddProject = () => {
     if (this.state.name) {
 
-      this.props.saveProject(new Project(this.state.name))
+      const project = new Project({
+        name: this.state.name
+      })
+      this.props.saveProject(project)
       this.onClose()
     }
   }

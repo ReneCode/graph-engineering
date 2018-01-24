@@ -1,7 +1,15 @@
 
 class Project {
-  constructor(name) {
-    this.name = name
+  constructor(data, id) {
+    this.name = data.name
+
+    this.id = id
+  }
+
+  toDocument() {
+    return {
+      name: this.name
+    }
   }
 }
 
