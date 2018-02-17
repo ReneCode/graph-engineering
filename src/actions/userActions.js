@@ -26,6 +26,11 @@ export const loginUserAction = (email, password) => {
   }
 }
 
+export const logoutUserAction = () => {
+  return {
+    type: actionTypes.LOGOUT_USER
+  }
+}
 
 export const setUserErrorAction = (errorCode, errorMessage ) => {
   return {

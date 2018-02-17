@@ -4,6 +4,11 @@ import {connect}  from 'react-redux'
 import { Redirect } from 'react-router';
 
 class Projects extends Component {
+
+  componentWillMount() {
+    
+  }
+
   render() {
     if (!this.props.userId) {
       return (

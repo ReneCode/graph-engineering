@@ -17,6 +17,15 @@ export function* loginUserSaga({email, password}) {
   }
 }
 
+export function* logoutUserSaga() {
+  try {
+    yield firebase.auth().signOut()
+    yield put(actions.setUserAction(null, null))
+  } catch (error) {
+    yield put(actions.setUserErrorAction(error.code, error.message))
+  }
+}
+
 export function* registerUserSaga({email, password}) {
   try {
     yield firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)

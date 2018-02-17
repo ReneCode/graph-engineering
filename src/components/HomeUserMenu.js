@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react'
+import { withRouter }  from 'react-router-dom';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -9,27 +10,33 @@ import * as actions from '../actions'
 
 class HomeUserMenu extends Component {
   handleLogout() {
-    this.props.setUser(null, null)
+    this.props.logoutUser()
+  }
+
+  handleProjects() {
+    this.props.history.push("/projects")
+  }
+
+  handleLogin() {
+    this.props.history.push("/login")
+  }
+
+  handleRegister() {
+    this.props.history.push("/register")
   }
 
   render() {
     if (!this.props.userId) {
       return (
         <div>
-          <Link to="/login">
-          <Button color="contrast">Login</Button>
-          </Link>
-          <Link to="/register">
-          <Button color="contrast">Register</Button>
-          </Link>
+          <Button color="contrast" onClick={this.handleLogin.bind(this)}>Login</Button>
+          <Button color="contrast" onClick={this.handleRegister.bind(this)}>Register</Button>
         </div>
       )
     } else {
       return (
         <div>
-          <Link to="/projects">
-          <Button color="contrast">projects</Button>
-          </Link>
+          <Button color="contrast" onClick={this.handleProjects.bind(this)}>Projects</Button>
           <Button color="contrast" onClick={this.handleLogout.bind(this)}>Logout</Button>
         </div>
       )
@@ -45,8 +52,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUser: (id, email) => dispatch(actions.setUserAction(id, email))
+    logoutUser: () => dispatch(actions.logoutUserAction()),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeUserMenu)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(HomeUserMenu));
