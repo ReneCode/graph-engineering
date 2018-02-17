@@ -7,7 +7,7 @@ import store from './store'
 
 import * as actions from './actions'
 
-import firebase from './firebase'
+import { firebase } from './firebase'
 
 firebase.auth().onAuthStateChanged(user => {
   store.dispatch(actions.setUserAction(user.uid, user.email))
