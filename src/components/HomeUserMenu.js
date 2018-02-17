@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import { withRouter }  from 'react-router-dom';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import Button from 'material-ui/Button'
 
