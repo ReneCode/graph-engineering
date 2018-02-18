@@ -1,7 +1,7 @@
 const express = require('express');
 const http = require('http');
 const logger = require('morgan');
-// var cors = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const routeApi = require("./route/api")
@@ -36,7 +36,7 @@ class WebServer {
     app.use(bodyParser.urlencoded({
       extended: true
     }));
-    // app.use(cors());
+    app.use(cors());
 
     if (this.options.logging) {
       app.use(logger('dev'));

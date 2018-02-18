@@ -8,14 +8,6 @@ export const loadProjectsAction = () => {
   }
 }
 
-
-export const saveProjectAction = (project) => {
-  return {
-    type: actionTypes.SAVE_PROJECT,
-    project
-  }
-}
-
 export const appendProjectAction = (project) => {
   return {
     type: actionTypes.APPEND_PROJECT,

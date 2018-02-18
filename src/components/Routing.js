@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './Home'
 import LoginUser from './LoginUser'
 import RegisterUser from './RegisterUser'
-import Projects from './Projects'
+import Projects from './ProjectList/Projects'
 
 const Routing = () => (
   <Router>

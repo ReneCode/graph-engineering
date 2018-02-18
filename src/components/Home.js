@@ -19,12 +19,12 @@ const style = {
 }
 
 const Home = (props) => {
-  const {classes} = props;
+  const { classes } = props;
   return (
-    <div className={ classes.root }>
+    <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography type="title" color="inherit" className={ classes.flex }>
+          <Typography type="title" color="inherit" className={classes.flex}>
             Graph-Engineering
           </Typography>
           <HomeUserMenu />

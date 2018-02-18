@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.17.1",
     "firebase": "^4.9.0",
     "material-ui": "^1.0.0-beta.27",
     "prop-types": "^15.6.0",
@@ -16,6 +17,7 @@
     "redux-saga": "^0.16.0"
   },
   "scripts": {
+    "server:w": "nodemon server/src/app.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
