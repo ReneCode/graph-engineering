@@ -5,9 +5,11 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/app.js",
-    "start:w": "nodemon src/app.js"
+    "start:w": "nodemon src/app.js",
+    "test": "jest"
   },
   "devDependencies": {
+    "jest": "^22.3.0",
     "nodemon": "^1.15.0"
   },
   "dependencies": {
