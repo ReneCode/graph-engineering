@@ -12,3 +12,7 @@ script:
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
+
+before_deploy:
+  cd server
+
