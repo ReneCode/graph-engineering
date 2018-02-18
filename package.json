@@ -2,6 +2,9 @@
   "name": "graph-engineering",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "8.9.4"
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "firebase": "^4.9.0",
