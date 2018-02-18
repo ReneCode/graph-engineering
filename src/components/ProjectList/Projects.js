@@ -1,39 +1,17 @@
 
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 
-import * as actions from "../../actions";
+import TopBar from "../TopBar";
 
-import ProjectItem from "./ProjectItem"
+import ProjectList from "./ProjectList"
 
-class Projects extends Component {
-  componentWillMount() {
-    this.props.loadProjects();
-  }
-
-  render() {
-    return (
-      <div>
-        {this.props.projects.map(p => {
-          return (
-            <ProjectItem project={p} />
-          );
-        })}
-      </div>
-    )
-  }
+const Projects = () => {
+  return (
+    <div>
+      <TopBar />
+      <ProjectList />
+    </div>
+  )
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loadProjects: () => dispatch(actions.loadProjectsAction())
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    projects: state.project.projects
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Projects);
+export default Projects;

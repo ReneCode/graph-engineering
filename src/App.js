@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux'
-import { MuiThemeProvider } from 'material-ui/styles'
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 
 import Routing from './components/Routing'
 import store from './store'
@@ -13,8 +13,10 @@ firebase.auth().onAuthStateChanged(user => {
   store.dispatch(actions.setUserAction(user.uid, user.email))
 })
 
+const theme = createMuiTheme();
+
 const App = () => (
-  <MuiThemeProvider >
+  <MuiThemeProvider theme={theme}>
     <Provider store={ store }>
       <Routing />
     </Provider>
