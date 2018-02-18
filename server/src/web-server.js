@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const routeApi = require("./route/api")
+const routeHome = require("./route/home")
 
 class WebServer {
   constructor(options) {
@@ -42,7 +43,7 @@ class WebServer {
       app.use(logger('dev'));
     }
 
-    // app.use("/", routeHome);
+    app.use("/", routeHome);
 
     app.use("/api/v1/", routeApi);
 

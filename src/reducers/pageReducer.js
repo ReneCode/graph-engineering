@@ -2,15 +2,15 @@
 import * as actionTypes from '../actionTypes'
 
 const initialState = {
-  projects: []
+  pages: []
 }
 
-const projectReducer = (state = initialState, action) => {
+const pageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.SET_PROJECTS:
+    case actionTypes.SET_PAGES:
       return {
         ...state,
-        projects: action.projects
+        pages: action.pages
       }
 
     default:
@@ -18,4 +18,4 @@ const projectReducer = (state = initialState, action) => {
   }
 }
 
-export default projectReducer
+export default pageReducer

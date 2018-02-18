@@ -1,9 +1,10 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const ProjectItem = ({ project }) => {
   return (
     <div className="project-item">
-      {project.name}
+      <Link to={`/projects/${project.id}`}>{project.name}</Link>
     </div>
   )
 }

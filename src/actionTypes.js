@@ -7,4 +7,6 @@ export const SET_USER_ERROR = 'SET_USER_ERROR'
 
 export const LOAD_PROJECTS = 'LOAD_PROJECTS'
 export const SET_PROJECTS = 'SET_PROJECTS'
-export const APPEND_PROJECT = 'APPEND_PROJECT'
+
+export const LOAD_PAGES = 'LOAD_PAGES'
+export const SET_PAGES = 'SET_PAGES'

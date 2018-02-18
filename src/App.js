@@ -9,6 +9,8 @@ import * as actions from './actions'
 
 import { firebase } from './firebase'
 
+import "./App.css"
+
 firebase.auth().onAuthStateChanged(user => {
   store.dispatch(actions.setUserAction(user.uid, user.email))
 })

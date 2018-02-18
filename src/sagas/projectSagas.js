@@ -8,8 +8,6 @@ const urlProjects = `${config.URL_BACKEND}/api/v1/projects`;
 
 
 export function* loadProjectsSaga() {
-
-  console.log("load", urlProjects, config.URL_BACKEND)
   try {
     const result = yield axios.get(urlProjects);
     if (result) {

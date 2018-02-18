@@ -8,13 +8,6 @@ export const loadProjectsAction = () => {
   }
 }
 
-export const appendProjectAction = (project) => {
-  return {
-    type: actionTypes.APPEND_PROJECT,
-    project
-  }
-}
-
 export const setProjectsAction = (projects) => {
   return {
     type: actionTypes.SET_PROJECTS,
