@@ -18,7 +18,8 @@
   },
   "scripts": {
     "server:w": "nodemon server/src/app.js",
-    "start": "react-scripts start",
+    "start": "node server/src/app.js",
+    "start:fe": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
