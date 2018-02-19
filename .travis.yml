@@ -3,10 +3,10 @@ node_js:
   - "8"
 
 install:
-  - echo "install front-end"
-  - yarn install
   - echo "install back-end"
-  - cd server
+  - yarn install
+  - echo "install front-end"
+  - cd client
   - yarn install
   - cd ..
 
@@ -14,19 +14,13 @@ before_script:
   - npm install -g firebase-tools
 
 script:
+  - echo "build the back-end"
+  - yarn test
   - echo "build the front-end"
+  - cd client
   - yarn test
   - yarn build
-  - echo "build the back-end"
-  - cd server
-  - yarn test
   - cd ..
-
-before_deploy:
-  cd server
-
-after_deploy:
-  cd ..
 
 deploy:
     provider: azure_web_apps

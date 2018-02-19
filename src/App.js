@@ -1,28 +1,26 @@
-import React from 'react';
-import { Provider } from 'react-redux'
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+const WebServer = require('./web-server');
+const database = require('./database');
 
-import Routing from './components/Routing'
-import store from './store'
+require('dotenv').config()
 
-import * as actions from './actions'
+const OPTIONS = {
+  port: process.env.PORT || 3001,
+  authorize: false
+};
 
-import { firebase } from './firebase'
+const webServer = new WebServer(OPTIONS);
+webServer.createServer();
 
-import "./App.css"
 
-firebase.auth().onAuthStateChanged(user => {
-  store.dispatch(actions.setUserAction(user.uid, user.email))
-})
+database.connect()
+  .then(() => {
+    return webServer.listen()
+  })
+  .then(() => {
+    console.log("server listen on port:", OPTIONS.port);
+  })
+  .catch((err) => {
+    console.log("can not start backend:", err);
+  });
 
-const theme = createMuiTheme();
 
-const App = () => (
-  <MuiThemeProvider theme={theme}>
-    <Provider store={ store }>
-      <Routing />
-    </Provider>
-  </MuiThemeProvider>
-)
-
-export default App
