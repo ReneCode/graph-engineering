@@ -18,9 +18,12 @@ script:
   - yarn test
   - echo "build the front-end"
   - cd client
+  - scripts/prebuild.sh
   - yarn test
   - yarn build
   - cd ..
+
+before_deploy:
 
 deploy:
     provider: azure_web_apps

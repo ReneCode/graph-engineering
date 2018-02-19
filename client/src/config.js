@@ -1,5 +1,2 @@
-const config = {}
 
-config.URL_BACKEND = "//localhost:3001";
-
-export default config;
+export const URL_BACKEND = "//localhost:3001";

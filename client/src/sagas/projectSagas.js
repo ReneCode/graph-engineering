@@ -1,10 +1,10 @@
 import { put } from "redux-saga/effects"
 import axios from "axios";
-import config from "../config";
+import {URL_BACKEND} from "../config";
 
 import * as actions from "../actions"
 
-const urlProjects = `${config.URL_BACKEND}/api/v1/projects`;
+const urlProjects = `${URL_BACKEND}/api/v1/projects`;
 
 
 export function* loadProjectsSaga() {
