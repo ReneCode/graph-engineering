@@ -21,10 +21,10 @@ const TopBar = (props) => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <IconButton >
+        <IconButton>
         </IconButton>
         <Typography type="title" color="inherit" className={classes.flex}>
-          Graph-Engineering
+          Graph Engineering
       </Typography>
         {props.children}
       </Toolbar>

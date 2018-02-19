@@ -10,9 +10,6 @@ install:
   - yarn install
   - cd ..
 
-before_script:
-  - npm install -g firebase-tools
-
 script:
   - echo "build the back-end"
   - yarn test
@@ -23,12 +20,11 @@ script:
   - yarn build
   - cd ..
 
-before_deploy:
-
 deploy:
     provider: azure_web_apps
     verbose: true
 
 after_success:
+  - npm install -g firebase-tools
   - firebase deploy --token $FIREBASE_TOKEN
 
