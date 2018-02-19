@@ -1,5 +1,6 @@
 
-echo == set config.js for front-end
+echo ====== set config.js for front-end
 
-echo export const URL_BACKEND = '"https://graph-engineering-backend.azurewebsites.net";' > src/config.js
-type src/config.js
+pwd
+echo export const URL_BACKEND = '"https://graph-engineering-backend.azurewebsites.net";' > ./src/config.js
+type .src/config.js
