@@ -1,6 +1,6 @@
 import { put } from "redux-saga/effects"
 import axios from "axios";
-import {URL_BACKEND} from "../config";
+import { URL_BACKEND } from "../config";
 
 import * as actions from "../actions"
 
