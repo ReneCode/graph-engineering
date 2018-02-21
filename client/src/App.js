@@ -2,7 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 
-import Routing from './components/Routing'
+import MainFrame from "./components/MainFrame";
+
 import store from './store'
 
 import * as actions from './actions'
@@ -35,7 +36,7 @@ const theme = createMuiTheme({
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <Provider store={ store }>
-      <Routing />
+      <MainFrame />
     </Provider>
   </MuiThemeProvider>
 )

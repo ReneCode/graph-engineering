@@ -1,26 +1,12 @@
 
-import React from 'react'
-import { withStyles } from 'material-ui/styles'
-
-import TopBar from "./TopBar";
-import HomeUserMenu from './HomeUserMenu'
-
-const styles = {
-  root: {
-    width: '100%',
-  }
-}
+import React from "react";
 
 const Home = (props) => {
-  const { classes } = props;
   return (
-    <div className={classes.root}>
-      <TopBar>
-        <HomeUserMenu />
-      </TopBar>
-    </div >
+    <div>
+      HOME
+    </div>
   )
 }
 
-
-export default withStyles(styles)(Home);
+export default Home;

@@ -12,8 +12,6 @@ const style = theme => ({
   root: {
     width: '100%',
   },
-  button: {
-  },
   flex: {
     flex: 1,
   },
@@ -25,7 +23,7 @@ const TopBar = (props) => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <IconButton color="inherit" onClick={() => props.history.push("/")} className={classes.button} aria-label="Home">
+        <IconButton color="inherit" onClick={() => props.history.push("/")} aria-label="Home">
           <HomeIcon />
         </IconButton>
         <Typography type="title" color="inherit" className={classes.flex}>
