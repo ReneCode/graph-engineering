@@ -28,15 +28,15 @@ class HomeUserMenu extends Component {
     if (!this.props.userId) {
       return (
         <div>
-          <Button color="contrast" onClick={this.handleLogin.bind(this)}>Login</Button>
-          <Button color="contrast" onClick={this.handleRegister.bind(this)}>Register</Button>
+          <Button color="inherit" onClick={this.handleLogin.bind(this)}>Login</Button>
+          <Button color="inherit" onClick={this.handleRegister.bind(this)}>Register</Button>
         </div>
       )
     } else {
       return (
         <div>
-          <Button color="contrast" onClick={this.handleProjects.bind(this)}>Projects</Button>
-          <Button color="contrast" onClick={this.handleLogout.bind(this)}>Logout</Button>
+          <Button color="inherit" onClick={this.handleProjects.bind(this)}>Projects</Button>
+          <Button color="inherit" onClick={this.handleLogout.bind(this)}>Logout</Button>
         </div>
       )
     }
