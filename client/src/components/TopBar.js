@@ -26,7 +26,7 @@ const TopBar = (props) => {
         <IconButton color="inherit" onClick={() => props.history.push("/")} aria-label="Home">
           <HomeIcon />
         </IconButton>
-        <Typography type="title" color="inherit" className={classes.flex}>
+        <Typography type="title" color="inherit" noWrap className={classes.flex}>
           Graph Engineering
       </Typography>
         {props.children}

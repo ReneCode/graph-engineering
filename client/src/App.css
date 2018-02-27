@@ -1,4 +1,7 @@
-
+.main-frame {
+  display: flex;
+  flex-direction: column;
+}
 .project-item {
   margin: 5px;
 }
@@ -7,4 +10,10 @@
   width: 400px;
   height: 40px;
   border-bottom: solid slategray
+}
+
+.sidebar-left {
+  width: 30vw;
+  background-color: #eee;
+  border-right: 1px solid #bbb;
 }

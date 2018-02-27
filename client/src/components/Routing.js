@@ -8,7 +8,7 @@ import Projects from './ProjectList/Projects'
 import Pages from "./PageList/Pages"
 
 const Routing = () => (
-  <div>
+  <div className="main-content">
     <Route exact path="/" component={Home} />
     <Route exact path="/login" component={LoginUser} />
     <Route exact path="/register" component={RegisterUser} />

@@ -13,14 +13,16 @@ const styles = {
   }
 }
 
-const MainFrame = ({classes}) => {
+const MainFrame = ({ classes }) => {
   return (
     <Router>
       <div className={classes.root}>
         <TopBar>
           <HomeUserMenu />
         </TopBar>
-        <Routing />
+        <div className="main-frame">
+          <Routing />
+        </div>
       </div>
     </Router>
   )
