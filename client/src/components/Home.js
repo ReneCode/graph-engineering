@@ -1,10 +1,12 @@
 
 import React from "react";
 
+import GraphicalEditor from "./GraphicalEditor";
+
 const Home = (props) => {
   return (
     <div>
-      HOME
+      <GraphicalEditor />
     </div>
   )
 }

@@ -4,7 +4,7 @@ import React from "react";
 import Drawer from "material-ui/Drawer";
 
 const styles = theme => {
-  
+    
 }
 
 const SidebarLeft = (props) => {
