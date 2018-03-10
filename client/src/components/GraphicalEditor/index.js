@@ -1,11 +1,11 @@
 
-import React from "react";
+import React, { Component } from "react";
 
 import { withStyles } from 'material-ui/styles';
 
 
 import Toolbar from "./Toolbar";
-
+import StatusBar from "./StatusBar";
 
 const styles = theme => ({
   root: {
@@ -14,12 +14,16 @@ const styles = theme => ({
   },
 
   svg: {
+    backgroundColor: "lightgrey",
+    margin: "5px",
+    height: "400px",
+    width: "100%"
+  },
+
+  items: {
     stroke: "red",
     strokeWidth: "2px",
     fill: "none",
-    backgroundColor: "lightgrey",
-    border: "2px solid yellow",
-    margin: "5px"
   },
 
   canvas: {
@@ -30,19 +34,42 @@ const styles = theme => ({
 
 });
 
-const GraphicalEditor = (props) => {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <Toolbar />
-      <div className={classes.canvas}>
-        <svg width="100%" height="300" className={classes.svg}>
-          <path d="M150 40 L75 200 L225 200 Z" />
+class GraphicalEditor extends Component {
+  constructor(props) {
+    super(props);
+    this.onLine = this.onLine.bind(this);
+    this.onSelect = this.onSelect.bind(this);
+    this.state = {
+      status: "ready"
+    };
+  }
+
+  onLine() {
+    this.setState({
+      status: "line"
+    })
+  }
+
+  onSelect() {
+    this.setState({
+      status: "Select"
+    })
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <svg className={classes.svg}>
+          <StatusBar text={this.state.status} />
+          <Toolbar click={[this.onLine, this.onSelect]} />
+          <g className={classes.items}>
+            <path d="M150 40 L75 200 L225 200 Z" />
+          </g>
         </svg>
       </div>
-
-    </div>
-  )
+    )
+  }
 }
 
 export default withStyles(styles)(GraphicalEditor);
