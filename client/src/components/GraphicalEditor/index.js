@@ -1,11 +1,13 @@
 
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import { withStyles } from 'material-ui/styles';
 
 
 import Toolbar from "./Toolbar";
 import StatusBar from "./StatusBar";
+import Item from "./items/Item";
 
 const styles = theme => ({
   root: {
@@ -57,6 +59,7 @@ class GraphicalEditor extends Component {
   }
 
   render() {
+    console.log(this.props.items)
     const { classes } = this.props;
     return (
       <div className={classes.root}>
@@ -64,7 +67,12 @@ class GraphicalEditor extends Component {
           <StatusBar text={this.state.status} />
           <Toolbar click={[this.onLine, this.onSelect]} />
           <g className={classes.items}>
-            <path d="M150 40 L75 200 L225 200 Z" />
+            { this.props.items.map(item => {
+              return (
+                <Item item={item} />
+              );
+            }) }
+            {/* <path d="M150 40 L75 200 L225 200 Z" /> */}
           </g>
         </svg>
       </div>
@@ -72,4 +80,10 @@ class GraphicalEditor extends Component {
   }
 }
 
-export default withStyles(styles)(GraphicalEditor);
+const mapStateToProps = state => {
+  return {
+    items: state.page.items
+  }
+}
+
+export default withStyles(styles)(connect(mapStateToProps)(GraphicalEditor));

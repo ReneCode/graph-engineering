@@ -1,0 +1,21 @@
+
+import * as actionTypes from '../actionTypes'
+
+const initialState = {
+  pages: []
+}
+
+const pageReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case actionTypes.SET_PAGES:
+      return {
+        ...state,
+        pages: action.pages
+      }
+
+    default:
+      return state
+  }
+}
+
+export default pageReducer

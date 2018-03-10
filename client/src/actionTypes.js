@@ -10,3 +10,7 @@ export const SET_PROJECTS = 'SET_PROJECTS'
 
 export const LOAD_PAGES = 'LOAD_PAGES'
 export const SET_PAGES = 'SET_PAGES'
+
+
+export const SET_ITEMS = "SET_ITEMS"; 
+export const DRAW_LINE = "DRAW_LINE";
