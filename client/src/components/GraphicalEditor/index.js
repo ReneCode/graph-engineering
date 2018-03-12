@@ -78,7 +78,7 @@ const mapDispatchToProps = dispatch => {
     mouseUp: ev => dispatch(actions.mouseUp(ev)),
     mouseMove: ev => dispatch(actions.mouseMove(ev)),
     generateLine: () => dispatch(actions.generateLine()),
-    generateCircle: () => dispatch(actions.generateCircle)
+    generateCircle: () => dispatch(actions.generateCircle())
   }
 }
 

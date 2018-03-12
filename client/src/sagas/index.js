@@ -7,6 +7,7 @@ import * as projectSagas from './projectSagas'
 // import * as pageSagas from './pageSagas'
 
 import { generateLineSaga } from "./generateLineSaga";
+import { generateCircleSaga } from "./generateCircleSaga";
 
 const sagas = [
   takeLatest(actionTypes.LOGIN_USER, userSagas.loginUserSaga),
@@ -15,7 +16,8 @@ const sagas = [
   takeLatest(actionTypes.LOAD_PROJECTS, projectSagas.loadProjectsSaga),
   // takeLatest(actionTypes.LOAD_PAGES, pageSagas.loadPagesSaga),
 
-  takeLatest(actionTypes.GENERATE_LINE, generateLineSaga)
+  takeLatest(actionTypes.GENERATE_LINE, generateLineSaga),
+  takeLatest(actionTypes.GENERATE_CIRCLE, generateCircleSaga)
 
 
 

@@ -6,9 +6,9 @@ import Point from "../models/Point";
 const initialState = {
   dynamicItems: [],
   items: [
-    new ItemLine( new Point(90,90), new Point(120,120) ),
-    new ItemLine( new Point(80,80), new Point(250,150) ),
-    new ItemLine( new Point(80,80), new Point(150,250) )
+    // new ItemLine( new Point(90,90), new Point(120,120) ),
+    // new ItemLine( new Point(80,80), new Point(250,150) ),
+    // new ItemLine( new Point(80,80), new Point(150,250) )
   ]
 }
 
