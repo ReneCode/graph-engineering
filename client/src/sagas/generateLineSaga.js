@@ -30,8 +30,8 @@ export function* generateLineSaga() {
         line.setFromTwoPoints(firstPoint, result.point)
         yield put(actions.setDynamicItem(line))
       } else {
-      yield put(actions.setStatus());
-      yield put(actions.removeDynamicItem(line))
+        yield put(actions.setStatus());
+        yield put(actions.removeDynamicItem(line))
         if (firstPoint.equal(result.point)) {
           wait = false
         } else {
