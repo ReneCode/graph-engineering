@@ -8,6 +8,8 @@ import ItemLine from '../models/ItemLine';
 import { getSVGPointSaga } from "./mouseSagas";
 
 export function* generateLineSaga() {
+  yield put(actions.setStatus("Line: set first Point"));
+
   const result = yield getSVGPointSaga(actionTypes.MOUSE_DOWN)
   if (!result) {
     return
@@ -18,6 +20,7 @@ export function* generateLineSaga() {
   try {
     let wait = true
     while (wait) {
+      yield put(actions.setStatus("Line: set second Point"));
       const result = yield getSVGPointSaga([actionTypes.MOUSE_UP, actionTypes.MOUSE_MOVE])
       if (!result) {
         return
@@ -27,7 +30,8 @@ export function* generateLineSaga() {
         line.setFromTwoPoints(firstPoint, result.point)
         yield put(actions.setDynamicItem(line))
       } else {
-        yield put(actions.removeDynamicItem(line))
+      yield put(actions.setStatus());
+      yield put(actions.removeDynamicItem(line))
         if (firstPoint.equal(result.point)) {
           wait = false
         } else {

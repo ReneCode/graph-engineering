@@ -6,3 +6,9 @@ export const generateLine = () => {
     type: actionTypes.GENERATE_LINE
   }
 }
+
+export const generateCircle = () => {
+  return {
+    type: actionTypes.GENERATE_CIRCLE
+  }
+}
