@@ -1,4 +1,4 @@
-
+/*
 import React from "react";
 
 import TopBar from "../TopBar";
@@ -16,3 +16,4 @@ const Pages = ({ match }) => {
 }
 
 export default Pages;
+*/

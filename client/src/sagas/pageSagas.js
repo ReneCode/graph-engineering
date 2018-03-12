@@ -1,3 +1,4 @@
+/*
 import { put } from "redux-saga/effects"
 import axios from "axios";
 import {URL_BACKEND} from "../config";
@@ -26,4 +27,4 @@ export function* loadPagesSaga({projectId}) {
     console.log("loadPagesSaga:", error)
   }
 }
-
+*/

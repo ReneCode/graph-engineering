@@ -13,7 +13,9 @@ import { firebase } from './firebase'
 import "./App.css"
 
 firebase.auth().onAuthStateChanged(user => {
-  store.dispatch(actions.setUserAction(user.uid, user.email))
+  if (user) {
+    store.dispatch(actions.setUserAction(user.uid, user.email))
+  }
 })
 
 const theme = createMuiTheme({

@@ -1,17 +1,23 @@
 
-import * as actionTypes from '../actionTypes'
+import  * as actionTypes from "../actionTypes";
 
-
-export const loadPagesAction = (projectId) => {
+export const setDynamicItem = item => {
   return {
-    type: actionTypes.LOAD_PAGES,
-    projectId
+    type: actionTypes.SET_DYNAMIC_ITEM,
+    item
   }
 }
 
-export const setPagesAction = (pages) => {
+export const removeDynamicItem = item => {
   return {
-    type: actionTypes.SET_PAGES,
-    pages
+    type: actionTypes.REMOVE_DYNAMIC_ITEM,
+    item
+  }
+}
+
+export const addItem = item => {
+  return {
+    type: actionTypes.ADD_ITEM,
+    item
   }
 }

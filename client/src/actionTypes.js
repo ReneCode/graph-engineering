@@ -12,5 +12,14 @@ export const LOAD_PAGES = 'LOAD_PAGES'
 export const SET_PAGES = 'SET_PAGES'
 
 
-export const SET_ITEMS = "SET_ITEMS"; 
-export const DRAW_LINE = "DRAW_LINE";
+export const ADD_ITEM = "ADD_ITEM"; 
+
+export const SET_DYNAMIC_ITEM = "SET_DYNAMIC_ITEM"; 
+export const REMOVE_DYNAMIC_ITEM = "REMOVE_DYNAMIC_ITEM"; 
+
+export const GENERATE_LINE = "GENERATE_LINE";
+
+
+export const MOUSE_MOVE = "MOUSE_MOVE";
+export const MOUSE_DOWN = "MOUSE_DOWN";
+export const MOUSE_UP = "MOUSE_UP";

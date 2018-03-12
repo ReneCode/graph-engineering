@@ -1,22 +1,22 @@
 
-import React from "react";
+// import React from "react";
 
-import Drawer from "material-ui/Drawer";
+// import Drawer from "material-ui/Drawer";
 
-const styles = theme => {
+// const styles = theme => {
     
-}
+// }
 
-const SidebarLeft = (props) => {
-  return (
-    <Drawer
-      variant="permanent"
-    >
-      {/* <div className="sidebar-left"> */}
-      {props.children}
-      {/* </div> */}
-    </Drawer>
-  )
-}
+// const SidebarLeft = (props) => {
+//   return (
+//     <Drawer
+//       variant="permanent"
+//     >
+//       {/* <div className="sidebar-left"> */}
+//       {props.children}
+//       {/* </div> */}
+//     </Drawer>
+//   )
+// }
 
-export default SidebarLeft;
+// export default SidebarLeft;

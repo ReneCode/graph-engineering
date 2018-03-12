@@ -6,9 +6,13 @@ const Line = props => {
   const style = {
     stroke: item.color
   };
-  return (
-    <line x1={item.x1} y1={item.y1} x2={item.x2} y2={item.y2} style={style} />
-  )
+  if (item.p1 && item.p2) {
+    return (
+      <line x1={item.p1.x} y1={item.p1.y} x2={item.p2.x} y2={item.p2.y} style={style} />
+    )
+  } else {
+    return null;
+  }
 }
 
 export default Line;

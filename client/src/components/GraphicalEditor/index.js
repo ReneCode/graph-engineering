@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 
 import { withStyles } from 'material-ui/styles';
 
+import * as actions from "../../actions";
 
+import SvgCanvas from "./SvgCanvas";
 import Toolbar from "./Toolbar";
 import StatusBar from "./StatusBar";
-import Item from "./items/Item";
+import ItemList from "./items/ItemList";
 
 const styles = theme => ({
   root: {
@@ -15,16 +17,15 @@ const styles = theme => ({
     flexDirection: "row"
   },
 
-  svg: {
-    backgroundColor: "lightgrey",
-    margin: "5px",
-    height: "400px",
-    width: "100%"
-  },
-
   items: {
     stroke: "red",
-    strokeWidth: "2px",
+    strokeWidth: "1px",
+    fill: "none",
+  },
+
+  dynamic: {
+    stroke: "gray",
+    strokeWidth: "1px",
     fill: "none",
   },
 
@@ -50,6 +51,8 @@ class GraphicalEditor extends Component {
     this.setState({
       status: "line"
     })
+
+    this.props.generateLine();
   }
 
   onSelect() {
@@ -59,22 +62,22 @@ class GraphicalEditor extends Component {
   }
 
   render() {
-    console.log(this.props.items)
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <svg className={classes.svg}>
+        <SvgCanvas 
+          mouseDown={ev => this.props.mouseDown(ev)}
+          mouseUp={ev => this.props.mouseUp(ev)}
+          mouseMove={ev => this.props.mouseMove(ev)}
+        >
           <StatusBar text={this.state.status} />
           <Toolbar click={[this.onLine, this.onSelect]} />
+          <ItemList className={classes.items} items={this.props.items} />
+          <ItemList className={classes.dynamic} items={this.props.dynamicItems} />
           <g className={classes.items}>
-            { this.props.items.map(item => {
-              return (
-                <Item item={item} />
-              );
-            }) }
             {/* <path d="M150 40 L75 200 L225 200 Z" /> */}
           </g>
-        </svg>
+        </SvgCanvas>
       </div>
     )
   }
@@ -82,8 +85,18 @@ class GraphicalEditor extends Component {
 
 const mapStateToProps = state => {
   return {
-    items: state.page.items
+    items: state.page.items,
+    dynamicItems: state.page.dynamicItems
   }
 }
 
-export default withStyles(styles)(connect(mapStateToProps)(GraphicalEditor));
+const mapDispatchToProps = dispatch => {
+  return {
+    mouseDown: ev => dispatch(actions.mouseDown(ev)),
+    mouseUp: ev => dispatch(actions.mouseUp(ev)),
+    mouseMove: ev => dispatch(actions.mouseMove(ev)),
+    generateLine: () => dispatch(actions.generateLine())
+  }
+}
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(GraphicalEditor));
