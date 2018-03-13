@@ -15,6 +15,14 @@ class ItemCircle extends ItemBase {
     this.radius = radius;
   }
 
+  pickDistance(point, pickRadius) {
+    const dist = Math.abs(this.p.sub(point).length() - this.radius);
+    if (dist <= pickRadius) {
+      return { distance: dist };
+    } else {
+      return null;
+    }
+  }
 }
 
 export default ItemCircle;

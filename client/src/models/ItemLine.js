@@ -18,7 +18,6 @@ class ItemLine extends ItemBase {
     this.p2 = p2;
   }
 
-
   pickDistance(point, radius) {
     const result = distanceLineToPoint(this, point);
     if (result.lambda >= 0 && result.lambda <= 1) {
@@ -38,7 +37,7 @@ class ItemLine extends ItemBase {
           return { distance: result.distance };
         }
       }
-      return false;
+      return null;
     }
   }
 
