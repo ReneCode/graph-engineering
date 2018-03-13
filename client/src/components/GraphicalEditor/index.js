@@ -6,6 +6,8 @@ import { withStyles } from 'material-ui/styles';
 
 import * as actions from "../../actions";
 
+
+import PropertyBar from "./PropertyBar";
 import SvgCanvas from "./SvgCanvas";
 import Toolbar from "./Toolbar";
 import StatusBar from "./StatusBar";
@@ -51,14 +53,13 @@ class GraphicalEditor extends Component {
           <StatusBar text={this.props.status} />
           <Toolbar click={[
             this.props.generateLine,
-            this.props.generateCircle
+            this.props.generateCircle,
+            this.props.selectItem
           ]} />
           <ItemList className={classes.items} items={this.props.items} />
           <ItemList className={classes.dynamic} items={this.props.dynamicItems} />
-          {/* <g className={classes.items}>
-            <path d="M150 40 L75 200 L225 200 Z" />
-          </g> */}
         </SvgCanvas>
+        <PropertyBar />
       </div>
     )
   }
@@ -78,7 +79,8 @@ const mapDispatchToProps = dispatch => {
     mouseUp: ev => dispatch(actions.mouseUp(ev)),
     mouseMove: ev => dispatch(actions.mouseMove(ev)),
     generateLine: () => dispatch(actions.generateLine()),
-    generateCircle: () => dispatch(actions.generateCircle())
+    generateCircle: () => dispatch(actions.generateCircle()),
+    selectItem: () => dispatch(actions.selectItem())
   }
 }
 

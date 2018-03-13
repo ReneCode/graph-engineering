@@ -12,3 +12,9 @@ export const generateCircle = () => {
     type: actionTypes.GENERATE_CIRCLE
   }
 }
+
+export const selectItem = () => {
+  return {
+    type: actionTypes.SELECT_ITEM
+  }
+}

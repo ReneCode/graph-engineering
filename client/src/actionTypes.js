@@ -20,7 +20,7 @@ export const REMOVE_DYNAMIC_ITEM = "REMOVE_DYNAMIC_ITEM";
 
 export const GENERATE_LINE = "GENERATE_LINE";
 export const GENERATE_CIRCLE = "GENERATE_CIRCLE";
-
+export const SELECT_ITEM = "SELECT_ITEM";
 
 export const MOUSE_MOVE = "MOUSE_MOVE";
 export const MOUSE_DOWN = "MOUSE_DOWN";

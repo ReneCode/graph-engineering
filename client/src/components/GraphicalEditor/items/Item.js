@@ -8,9 +8,12 @@ import ItemCircle from "../../../models/ItemCircle";
 
 const Item = props => {
   const { item } = props;
+  const style = {
+    stroke: item.color
+  };
   if (item instanceof ItemLine) {
     return (
-      <Line item={item} />
+      <Line item={item} style={style} />
     );
   }
 

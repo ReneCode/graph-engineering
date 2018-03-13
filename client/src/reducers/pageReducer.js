@@ -6,14 +6,13 @@ import Point from "../models/Point";
 const initialState = {
   dynamicItems: [],
   items: [
-    // new ItemLine( new Point(90,90), new Point(120,120) ),
-    // new ItemLine( new Point(80,80), new Point(250,150) ),
-    // new ItemLine( new Point(80,80), new Point(150,250) )
+    new ItemLine( new Point(90,90), new Point(120,120), { color: "blue "} ),
+    new ItemLine( new Point(80,80), new Point(250,150), { color: "yellow"} ),
+    new ItemLine( new Point(80,80), new Point(150,250), { color:"green"} )
   ]
 }
 
 const setDynamicItem = (state, action) => {
-
   const foundIndex = state.dynamicItems.indexOf(action.item)
   if (foundIndex < 0) {
     // not found - append new item

@@ -4,15 +4,20 @@
 let lastId = 1;
 
 class ItemBase {
-  constructor() {
+  constructor(option) {
+    if (option) {
+      this.color = option.color;
+    }
 
     this.id = lastId++;
     // this.id = uuidv1()
   }
 
-  // canPick(point, radius) {
-  //   throw new Error("canPick method missing")
-  // }
+  // return { distance: 123 }  if pickable
+  // else return null
+  pickDistance(point, radius) {
+    throw new Error("pickDistance method missing")
+  }
 
   // getResizeData(handleIndex) {
   //   return null
