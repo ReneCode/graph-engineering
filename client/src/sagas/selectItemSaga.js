@@ -27,8 +27,8 @@ export function* selectItemSaga() {
   const { point } = result;
   const items = yield getItems();
 
-  const pickedItem = pickNearestItem(items, point, pickRadius)
-
+  const pickedItem = pickNearestItem(items, point, pickRadius);
+  yield put(actions.setSelectedItem(pickedItem));
   // let minDistance;
   // let pickedItem;
   // items.forEach(item => {

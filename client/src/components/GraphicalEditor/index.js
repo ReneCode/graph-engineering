@@ -31,6 +31,15 @@ const styles = theme => ({
     fill: "none",
   },
 
+  selected: {
+    stroke: "#111",
+    strokeWidth: "2px",
+    fill: "none",
+    strokeDasharray: "10,10",
+    animation: "dashOffsetAnimation 0.8s infinite",
+    animationTimingFunction: "linear"
+  },
+
   canvas: {
     flexGrow: 1,
     margin: "4px",
@@ -56,8 +65,9 @@ class GraphicalEditor extends Component {
             this.props.generateCircle,
             this.props.selectItem
           ]} />
-          <ItemList className={classes.items} items={this.props.items} />
+          <ItemList className={classes.items} items={this.props.items} ignoreItems={this.props.selectedItems} />
           <ItemList className={classes.dynamic} items={this.props.dynamicItems} />
+          <ItemList className={classes.selected} items={this.props.selectedItems} />
         </SvgCanvas>
         <PropertyBar />
       </div>
@@ -69,6 +79,7 @@ const mapStateToProps = state => {
   return {
     items: state.page.items,
     dynamicItems: state.page.dynamicItems,
+    selectedItems: state.page.selectedItems,
     status: state.status.status
   }
 }

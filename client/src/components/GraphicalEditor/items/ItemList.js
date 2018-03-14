@@ -8,10 +8,12 @@ const ItemList = props => {
     return null
   }
   return (
-    <g className={ props.className }>
-      { props.items.map((item, index) => {
-          return (<Item item={ item } key={ index } selected={ props.selected } />)
-        }) }
+    <g className={props.className}>
+      {props.items.map((item, index) => {
+        if (!props.ignoreItems || props.ignoreItems.indexOf(item) < 0) {
+          return (<Item item={item} key={index} selected={props.selected} />)
+        }
+      })}
     </g>
   )
 }

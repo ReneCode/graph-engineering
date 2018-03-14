@@ -18,6 +18,8 @@ export const ADD_ITEM = "ADD_ITEM";
 export const SET_DYNAMIC_ITEM = "SET_DYNAMIC_ITEM"; 
 export const REMOVE_DYNAMIC_ITEM = "REMOVE_DYNAMIC_ITEM"; 
 
+export const SET_SELECTED_ITEM = "SET_SELECTED_ITEM";
+
 export const GENERATE_LINE = "GENERATE_LINE";
 export const GENERATE_CIRCLE = "GENERATE_CIRCLE";
 export const SELECT_ITEM = "SELECT_ITEM";

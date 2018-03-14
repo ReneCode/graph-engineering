@@ -19,7 +19,7 @@ const Item = props => {
 
   if (item instanceof ItemCircle) {
     return (
-      <Circle item={item} />
+      <Circle item={item} style={style} />
     )
   }
 

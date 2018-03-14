@@ -4,11 +4,12 @@ import ItemLine from "../models/ItemLine";
 import Point from "../models/Point";
 
 const initialState = {
+  selectedItems: [],
   dynamicItems: [],
   items: [
-    new ItemLine( new Point(90,90), new Point(120,120), { color: "blue "} ),
-    new ItemLine( new Point(80,80), new Point(250,150), { color: "yellow"} ),
-    new ItemLine( new Point(80,80), new Point(150,250), { color:"green"} )
+    new ItemLine(new Point(90, 90), new Point(120, 120), { color: "blue " }),
+    new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
+    new ItemLine(new Point(80, 80), new Point(150, 250), { color: "green" })
   ]
 }
 
@@ -49,6 +50,19 @@ const pageReducer = (state = initialState, action) => {
       return {
         ...state,
         dynamicItems: state.dynamicItems.filter(i => i !== action.item)
+      }
+
+    case actionTypes.SET_SELECTED_ITEM:
+      if (action.item) {
+        return {
+          ...state,
+          selectedItems: [action.item]
+        }
+      } else {
+        return {
+          ...state,
+          selectedItems: []
+        }
       }
 
     default:
