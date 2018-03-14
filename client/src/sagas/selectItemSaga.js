@@ -13,12 +13,11 @@ function* getItems() {
   return pageState.items;
 }
 
-
-
 export function* selectItemSaga() {
   yield put(actions.setStatus("SelectItem"));
 
   const result = yield getSVGPointSaga(actionTypes.MOUSE_DOWN)
+  yield put(actions.setStatus());
   if (!result) {
     return
   }
@@ -29,23 +28,4 @@ export function* selectItemSaga() {
 
   const pickedItem = pickNearestItem(items, point, pickRadius);
   yield put(actions.setSelectedItem(pickedItem));
-  // let minDistance;
-  // let pickedItem;
-  // items.forEach(item => {
-  //   const result = item.pickDistance(point, pickRadius);
-  //   if (result) {
-  //     if (pickedItem === undefined) {
-  //       pickedItem = item;
-  //       minDistance = result.distance;
-  //     } else {
-  //       if (result.distance < minDistance) {
-  //         pickedItem = item;
-  //         minDistance = result.distance;
-  //       }
-  //     }
-  //   }
-  // })
-
-  console.log("picked:", pickedItem);
-
 }

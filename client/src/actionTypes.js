@@ -15,6 +15,8 @@ export const SET_STATUS = "SET_STATUS";
 
 export const ADD_ITEM = "ADD_ITEM"; 
 
+export const CHANGE_SELECTED_ITEM = "CHANGE_SELECTED_ITEM";
+
 export const SET_DYNAMIC_ITEM = "SET_DYNAMIC_ITEM"; 
 export const REMOVE_DYNAMIC_ITEM = "REMOVE_DYNAMIC_ITEM"; 
 

@@ -7,10 +7,17 @@ class ItemLine extends ItemBase {
   constructor(p1, p2, option) {
     super(option);
 
-    this.type = "line";
     this.p1 = p1 || new Point();
     this.p2 = p2 || new Point();
+  }
 
+  clone() {
+    const newLine = new ItemLine()
+    const clone = JSON.parse(JSON.stringify(this))
+    Object.assign(newLine, clone);
+    newLine.p1 = this.p1.clone();
+    newLine.p2 = this.p2.clone();
+    return newLine
   }
 
   setFromTwoPoints(p1, p2) {

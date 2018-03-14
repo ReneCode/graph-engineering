@@ -4,9 +4,9 @@
 let lastId = 1;
 
 class ItemBase {
-  constructor(option) {
-    if (option) {
-      this.color = option.color;
+  constructor(options) {
+    if (options) {
+      this.color = options.color;
     }
 
     this.id = lastId++;
@@ -17,6 +17,12 @@ class ItemBase {
   // else return null
   pickDistance(point, radius) {
     throw new Error("pickDistance method missing")
+  }
+
+  change(prop, value) {
+    const newObject = this.clone();
+    newObject[prop] = value;
+    return newObject;
   }
 
   // getResizeData(handleIndex) {

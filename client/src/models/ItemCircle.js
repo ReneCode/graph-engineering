@@ -3,12 +3,19 @@ import Point from "./Point";
 import ItemBase from "./ItemBase";
 
 class ItemCircle extends ItemBase {
-  constructor(p, radius) {
-    super();
+  constructor(p, radius, options) {
+    super(options);
 
-    this.type = "circle";
     this.p = p || new Point();
     this.radius = radius || 50;
+  }
+
+  clone() {
+    const newCircle = new ItemCircle()
+    const clone = JSON.parse(JSON.stringify(this))
+    Object.assign(newCircle, clone)
+    newCircle.p = this.p.clone();
+    return newCircle
   }
 
   setRadius(radius) {

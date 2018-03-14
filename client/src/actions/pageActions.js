@@ -28,3 +28,11 @@ export const addItem = item => {
     item
   }
 }
+
+export const changeSelectedItem = (prop, value) => {
+  return {
+    type: actionTypes.CHANGE_SELECTED_ITEM,
+    prop,
+    value
+  }
+}

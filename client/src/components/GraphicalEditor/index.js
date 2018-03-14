@@ -65,11 +65,11 @@ class GraphicalEditor extends Component {
             this.props.generateCircle,
             this.props.selectItem
           ]} />
-          <ItemList className={classes.items} items={this.props.items} ignoreItems={this.props.selectedItems} />
+          <ItemList className={classes.items} items={this.props.items} xignoreItems={this.props.selectedItems} />
           <ItemList className={classes.dynamic} items={this.props.dynamicItems} />
           <ItemList className={classes.selected} items={this.props.selectedItems} />
         </SvgCanvas>
-        <PropertyBar />
+        <PropertyBar items={this.props.selectedItems} changeValue={this.props.changeSelectedItem} />
       </div>
     )
   }
@@ -91,7 +91,8 @@ const mapDispatchToProps = dispatch => {
     mouseMove: ev => dispatch(actions.mouseMove(ev)),
     generateLine: () => dispatch(actions.generateLine()),
     generateCircle: () => dispatch(actions.generateCircle()),
-    selectItem: () => dispatch(actions.selectItem())
+    selectItem: () => dispatch(actions.selectItem()),
+    changeSelectedItem: (prop, value) => dispatch(actions.changeSelectedItem(prop, value))
   }
 }
 

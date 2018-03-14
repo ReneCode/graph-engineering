@@ -11,6 +11,7 @@ const Item = props => {
   const style = {
     stroke: item.color
   };
+
   if (item instanceof ItemLine) {
     return (
       <Line item={item} style={style} />

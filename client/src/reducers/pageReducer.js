@@ -1,6 +1,7 @@
 
 import * as actionTypes from '../actionTypes'
 import ItemLine from "../models/ItemLine";
+import ItemCircle from "../models/ItemCircle";
 import Point from "../models/Point";
 
 const initialState = {
@@ -9,7 +10,8 @@ const initialState = {
   items: [
     new ItemLine(new Point(90, 90), new Point(120, 120), { color: "blue " }),
     new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
-    new ItemLine(new Point(80, 80), new Point(150, 250), { color: "green" })
+    new ItemLine(new Point(80, 80), new Point(150, 250), { color: "green" }),
+    new ItemCircle(new Point(130, 130), 60, { color: "#d7d"})
   ]
 }
 
@@ -34,6 +36,29 @@ const setDynamicItem = (state, action) => {
   }
 }
 
+const setSelectedItem = (state, action) => {
+  if (action.item) {
+    return {
+      ...state,
+      items: state.items.concat(state.selectedItems).filter(item => item !== action.item),
+      selectedItems: [action.item]
+    }
+  } else {
+    // de-select item
+    return {
+      ...state,
+      items: state.items.concat(state.selectedItems),
+      selectedItems: []
+    }
+  }
+} 
+
+const changeSelectedItem = (state, action) => {
+  return {
+    ...state,
+    selectedItems: state.selectedItems.map(item => item.change(action.prop, action.value))
+  };
+}
 
 const pageReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -53,17 +78,10 @@ const pageReducer = (state = initialState, action) => {
       }
 
     case actionTypes.SET_SELECTED_ITEM:
-      if (action.item) {
-        return {
-          ...state,
-          selectedItems: [action.item]
-        }
-      } else {
-        return {
-          ...state,
-          selectedItems: []
-        }
-      }
+      return setSelectedItem(state, action);
+
+    case actionTypes.CHANGE_SELECTED_ITEM: 
+      return changeSelectedItem(state, action);
 
     default:
       return state
