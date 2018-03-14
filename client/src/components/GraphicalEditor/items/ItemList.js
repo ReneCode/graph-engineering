@@ -12,6 +12,8 @@ const ItemList = props => {
       {props.items.map((item, index) => {
         if (!props.ignoreItems || props.ignoreItems.indexOf(item) < 0) {
           return (<Item item={item} key={index} selected={props.selected} />)
+        } else {
+          return null
         }
       })}
     </g>

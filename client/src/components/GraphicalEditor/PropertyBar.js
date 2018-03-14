@@ -28,7 +28,7 @@ class PropertyBar extends Component {
       border: "1px solid gray"
     }
 
-    if (!this.props.items || this.props.items.length == 0) {
+    if (!this.props.items || this.props.items.length === 0) {
       return (
         <div style={style}>
         </div>
