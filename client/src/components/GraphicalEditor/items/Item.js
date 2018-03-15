@@ -2,9 +2,11 @@ import React from "react";
 
 import Line from "./Line";
 import Circle from "./Circle";
+import Group from "./Group";
 
 import ItemLine from "../../../models/ItemLine";
 import ItemCircle from "../../../models/ItemCircle";
+import ItemGroup from "../../../models/ItemGroup";
 
 const Item = props => {
   const { item } = props;
@@ -22,6 +24,12 @@ const Item = props => {
   if (item instanceof ItemCircle) {
     return (
       <Circle item={item} style={style} />
+    )
+  }
+
+  if (item instanceof ItemGroup) {
+    return (
+      <Group item={item} style={style} />
     )
   }
 

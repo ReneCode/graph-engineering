@@ -19,7 +19,7 @@ const Toolbar = (props) => {
 
   const textStyle = {
     fontFamily: "verdana",
-    fontSize: 10,
+    fontSize: 12,
   };
 
   let buttons = []
@@ -28,10 +28,18 @@ const Toolbar = (props) => {
     const button = props.buttons[i];
     let x = 15;
     let y = i * h + 15;
+
+    // stopPropagation on mouseDown / mouseUp, because
+    // otherwise the svg-element would also receive that
+    // event.
     buttons.push(
-      <g style={buttonStyle}>
-        <rect key={i} onClick={button.click} x={x} y={y} style={style} />
-        <text x={x + 5} y={y + h/2} style={textStyle} >{button.text}</text>
+      <g key={i} 
+        onClick={button.click} 
+        onMouseDown={ e => e.stopPropagation() } 
+        onMouseUp={ e => e.stopPropagation() } 
+        style={buttonStyle}>
+        <rect key={i} x={x} y={y} style={style} />
+        <text x={x + 2} y={y + 3 + h/2} style={textStyle} >{button.text}</text>
       </g>
     );
   }
@@ -43,7 +51,7 @@ const Toolbar = (props) => {
 }
 
 Toolbar.propTypes = {
-  buttons: PropTypes.object.isRequired
+  buttons: PropTypes.array.isRequired
 }
 
 export default Toolbar;

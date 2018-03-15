@@ -24,10 +24,6 @@ class ItemBase {
     newObject[prop] = value;
     return newObject;
   }
-
-  // getResizeData(handleIndex) {
-  //   return null
-  // }
 }
 
 export default ItemBase

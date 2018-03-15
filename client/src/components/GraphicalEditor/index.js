@@ -64,6 +64,7 @@ class GraphicalEditor extends Component {
           <Toolbar buttons={[
             { click: this.props.generateLine, text:"line"},
             { click: this.props.generateCircle, text: "circle" },
+            { click: this.props.groupSelectedItems, text: "group" },
             { click: this.props.selectItem, text: "select" }
           ]} />
           <ItemList className={classes.items} items={this.props.items} />
@@ -93,7 +94,8 @@ const mapDispatchToProps = dispatch => {
     generateLine: () => dispatch(actions.startInteraction(IA_GENERATE_LINE)),
     generateCircle: () => dispatch(actions.startInteraction(IA_GENERATE_CIRCLE)),
     selectItem: () => dispatch(actions.startInteraction(IA_SELECT_ITEM)),
-    changeSelectedItem: (prop, value) => dispatch(actions.changeSelectedItem(prop, value))
+    changeSelectedItem: (prop, value) => dispatch(actions.changeSelectedItem(prop, value)),
+    groupSelectedItems: () => dispatch(actions.groupSelectedItems())
   }
 }
 

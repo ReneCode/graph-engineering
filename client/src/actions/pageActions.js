@@ -28,6 +28,12 @@ export const unselectItems = () => {
   }
 }
 
+export const groupSelectedItems = () => {
+  return {
+    type: actionTypes.GROUP_SELECTED_ITEMS
+  }
+}
+
 export const addItem = item => {
   return {
     type: actionTypes.ADD_ITEM,

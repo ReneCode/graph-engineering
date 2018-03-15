@@ -2,14 +2,20 @@
 import * as actionTypes from '../actionTypes'
 import ItemLine from "../models/ItemLine";
 import ItemCircle from "../models/ItemCircle";
+import ItemGroup from "../models/ItemGroup";
 import Point from "../models/Point";
 
 const initialState = {
   selectedItems: [],
   dynamicItems: [],
   items: [
-    new ItemLine(new Point(90, 90), new Point(120, 120), { color: "blue " }),
-    new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
+
+    // new ItemGroup([
+    //   new ItemCircle(new Point(200, 80), 40),
+    //   new ItemCircle(new Point(200, 80), 60)
+    // ]),
+    // new ItemLine(new Point(90, 90), new Point(120, 120), { color: "blue " }),
+    // new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
     new ItemLine(new Point(80, 80), new Point(150, 250), { color: "green" }),
     new ItemCircle(new Point(130, 130), 60, { color: "#d7d" })
   ]
@@ -48,15 +54,15 @@ const selectItem = (state, action) => {
       items: state.items.filter(item => selectedItems.indexOf(item) < 0),
       selectedItems: selectedItems
     }
-  } 
+  }
 }
 
 const unselectItems = (state, action) => {
-    return {
-      ...state,
-      items: state.items.concat(state.selectedItems),
-      selectedItems: []
-    }
+  return {
+    ...state,
+    items: state.items.concat(state.selectedItems),
+    selectedItems: []
+  }
 }
 
 
@@ -64,6 +70,14 @@ const changeSelectedItem = (state, action) => {
   return {
     ...state,
     selectedItems: state.selectedItems.map(item => item.change(action.prop, action.value))
+  };
+}
+
+
+const groupSelectedItems = (state, action) => {
+  return {
+    ...state,
+    selectedItems: [ new ItemGroup(state.selectedItems) ]
   };
 }
 
@@ -92,6 +106,9 @@ const pageReducer = (state = initialState, action) => {
 
     case actionTypes.CHANGE_SELECTED_ITEM:
       return changeSelectedItem(state, action);
+
+    case actionTypes.GROUP_SELECTED_ITEMS:
+      return groupSelectedItems(state, action);
 
     default:
       return state
