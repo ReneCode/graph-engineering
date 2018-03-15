@@ -10,12 +10,12 @@ const initialState = {
   dynamicItems: [],
   items: [
 
-    // new ItemGroup([
-    //   new ItemCircle(new Point(200, 80), 40),
-    //   new ItemCircle(new Point(200, 80), 60)
-    // ]),
-    // new ItemLine(new Point(90, 90), new Point(120, 120), { color: "blue " }),
-    // new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
+    new ItemGroup([
+      new ItemCircle(new Point(200, 80), 40),
+      new ItemCircle(new Point(200, 80), 60)
+    ]),
+    new ItemLine(new Point(90, 90), new Point(120, 120), { color: "blue " }),
+    new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
     new ItemLine(new Point(80, 80), new Point(150, 250), { color: "green" }),
     new ItemCircle(new Point(130, 130), 60, { color: "#d7d" })
   ]

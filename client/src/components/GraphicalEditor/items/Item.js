@@ -9,11 +9,15 @@ import ItemCircle from "../../../models/ItemCircle";
 import ItemGroup from "../../../models/ItemGroup";
 
 const Item = props => {
-  const { item } = props;
-  const style = {
-    stroke: item.color,
-    strokeWidth: item.strokeWidth
-  };
+  const { item, noStyle } = props;
+
+  let style = {};
+  if (noStyle !== true) {
+    style = {
+      stroke: item.color,
+      strokeWidth: item.strokeWidth
+    };
+  }
 
   if (item instanceof ItemLine) {
     return (

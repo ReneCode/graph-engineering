@@ -18,7 +18,6 @@ export function* selectItemSaga() {
   yield put(actions.setStatus("SelectItem"));
 
   const result = yield getSVGPointSaga(actionTypes.MOUSE_DOWN)
-  console.log("Select: MouseDown")
   yield put(actions.setStatus());
   if (!result) {
     return
