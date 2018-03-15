@@ -35,7 +35,7 @@ const styles = theme => ({
     stroke: "#111",
     strokeWidth: "2px",
     fill: "none",
-    strokeDasharray: "10,10",
+    strokeDasharray: "5,5",
     animation: "dashOffsetAnimation 0.8s infinite",
     animationTimingFunction: "linear"
   },
