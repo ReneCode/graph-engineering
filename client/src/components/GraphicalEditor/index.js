@@ -61,10 +61,10 @@ class GraphicalEditor extends Component {
           mouseMove={ev => this.props.mouseMove(ev)}
         >
           <StatusBar text={this.props.status} />
-          <Toolbar click={[
-            this.props.generateLine,
-            this.props.generateCircle,
-            this.props.selectItem
+          <Toolbar buttons={[
+            { click: this.props.generateLine, text:"line"},
+            { click: this.props.generateCircle, text: "circle" },
+            { click: this.props.selectItem, text: "select" }
           ]} />
           <ItemList className={classes.items} items={this.props.items} />
           <ItemList className={classes.dynamic} items={this.props.dynamicItems} />
