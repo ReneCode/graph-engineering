@@ -11,7 +11,7 @@ const initialState = {
     new ItemLine(new Point(90, 90), new Point(120, 120), { color: "blue " }),
     new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
     new ItemLine(new Point(80, 80), new Point(150, 250), { color: "green" }),
-    new ItemCircle(new Point(130, 130), 60, { color: "#d7d"})
+    new ItemCircle(new Point(130, 130), 60, { color: "#d7d" })
   ]
 }
 
@@ -36,22 +36,29 @@ const setDynamicItem = (state, action) => {
   }
 }
 
-const setSelectedItem = (state, action) => {
+const selectItem = (state, action) => {
+  if (state.items.indexOf(action.item) < 0) {
+    throw new Error("item not in item-list");
+  }
+
+  const selectedItems = state.selectedItems.concat(action.item);
   if (action.item) {
     return {
       ...state,
-      items: state.items.concat(state.selectedItems).filter(item => item !== action.item),
-      selectedItems: [action.item]
+      items: state.items.filter(item => selectedItems.indexOf(item) < 0),
+      selectedItems: selectedItems
     }
-  } else {
-    // de-select item
+  } 
+}
+
+const unselectItems = (state, action) => {
     return {
       ...state,
       items: state.items.concat(state.selectedItems),
       selectedItems: []
     }
-  }
-} 
+}
+
 
 const changeSelectedItem = (state, action) => {
   return {
@@ -77,10 +84,13 @@ const pageReducer = (state = initialState, action) => {
         dynamicItems: state.dynamicItems.filter(i => i !== action.item)
       }
 
-    case actionTypes.SET_SELECTED_ITEM:
-      return setSelectedItem(state, action);
+    case actionTypes.SELECT_ITEM:
+      return selectItem(state, action);
 
-    case actionTypes.CHANGE_SELECTED_ITEM: 
+    case actionTypes.UNSELECT_ITEMS:
+      return unselectItems(state, action);
+
+    case actionTypes.CHANGE_SELECTED_ITEM:
       return changeSelectedItem(state, action);
 
     default:

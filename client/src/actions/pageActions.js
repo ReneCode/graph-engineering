@@ -15,10 +15,16 @@ export const removeDynamicItem = item => {
   }
 }
 
-export const setSelectedItem = item => {
+export const selectItem = item => {
   return {
-    type: actionTypes.SET_SELECTED_ITEM,
+    type: actionTypes.SELECT_ITEM,
     item
+  }
+}
+
+export const unselectItems = () => {
+  return {
+    type: actionTypes.UNSELECT_ITEMS,
   }
 }
 

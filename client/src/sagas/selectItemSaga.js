@@ -28,7 +28,11 @@ export function* selectItemSaga() {
   const items = yield getItems();
 
   const pickedItem = pickNearestItem(items, point, pickRadius);
-  yield put(actions.setSelectedItem(pickedItem));
+  if (pickedItem) {
+    yield put(actions.selectItem(pickedItem));
+  } else {
+    yield put(actions.unselectItems());
+  }
 
   yield put(actions.startInteraction(IA_SELECT_ITEM));
 }

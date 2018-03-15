@@ -51,7 +51,7 @@ const styles = theme => ({
 
 class GraphicalEditor extends Component {
 
-  render() {
+  render() { 
     const { classes } = this.props;
     return (
       <div className={classes.root}>
@@ -66,7 +66,7 @@ class GraphicalEditor extends Component {
             this.props.generateCircle,
             this.props.selectItem
           ]} />
-          <ItemList className={classes.items} items={this.props.items} xignoreItems={this.props.selectedItems} />
+          <ItemList className={classes.items} items={this.props.items} />
           <ItemList className={classes.dynamic} items={this.props.dynamicItems} />
           <ItemList className={classes.selected} items={this.props.selectedItems} />
         </SvgCanvas>
