@@ -81,6 +81,42 @@ const groupSelectedItems = (state, action) => {
   };
 }
 
+const highlightItem = (state, action) => {
+  if (action.item) {
+    return {
+      ...state,
+      items: state.items.map(item => {
+        if (item !== action.item) {
+          if (item.isHighlighted) {
+            let newItem = item.clone();
+            newItem.setHighlight(false);
+            return newItem;          
+          } else {
+            return item;
+          }
+        } else {
+          let newItem = item.clone();
+          newItem.setHighlight(true);
+          return newItem;
+        }
+      })
+    }
+  } else {
+    return {
+      ...state,
+      items: state.items.map(item => {
+        if (item.isHighlighted) {
+          let newItem = item.clone();
+          newItem.setHighlight(false);
+          return newItem;          
+        } else {
+          return item;
+        }
+      })
+    }
+  }
+}
+
 const pageReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_ITEM:
@@ -109,6 +145,9 @@ const pageReducer = (state = initialState, action) => {
 
     case actionTypes.GROUP_SELECTED_ITEMS:
       return groupSelectedItems(state, action);
+
+      case actionTypes.HIGHLIGHT_ITEM:
+      return highlightItem(state, action);
 
     default:
       return state

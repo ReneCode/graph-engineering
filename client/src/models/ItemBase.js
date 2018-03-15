@@ -9,6 +9,7 @@ class ItemBase {
       this.color = options.color;
     }
 
+    this.highlight = false;
     this.id = lastId++;
     // this.id = uuidv1()
   }
@@ -23,6 +24,14 @@ class ItemBase {
     const newObject = this.clone();
     newObject[prop] = value;
     return newObject;
+  }
+
+  setHighlight(highlight = true) {
+    this.highlight = highlight
+  }
+
+  isHighlighted() {
+    return this.highlight;
   }
 }
 

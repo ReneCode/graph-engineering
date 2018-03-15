@@ -19,6 +19,16 @@ const Item = props => {
     };
   }
 
+  if (item.isHighlighted()) {
+    style.strokeWidth = 5;
+    style.strokeDasharray= "5,5";
+    style.animation= "dashOffsetAnimation 0.3s infinite";
+    style.animationTimingFunction = "linear";
+
+  }
+
+
+
   if (item instanceof ItemLine) {
     return (
       <Line item={item} style={style} />

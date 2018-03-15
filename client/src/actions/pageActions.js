@@ -15,6 +15,14 @@ export const removeDynamicItem = item => {
   }
 }
 
+export const highlightItem = item => {
+  return {
+    type: actionTypes.HIGHLIGHT_ITEM,
+    item
+  }
+}
+
+
 export const selectItem = item => {
   return {
     type: actionTypes.SELECT_ITEM,
@@ -33,6 +41,12 @@ export const groupSelectedItems = () => {
     type: actionTypes.GROUP_SELECTED_ITEMS
   }
 }
+
+// export const unGroupSelectedItems = () => {
+//   return {
+//     type: actionTypes.UNGROUP_SELECTED_ITEMS
+//   }
+// }
 
 export const addItem = item => {
   return {

@@ -17,7 +17,7 @@ function* getItems() {
 export function* selectItemSaga() {
   yield put(actions.setStatus("SelectItem"));
 
-  const result = yield getSVGPointSaga(actionTypes.MOUSE_DOWN)
+  const result = yield getSVGPointSaga([actionTypes.MOUSE_DOWN, actionTypes.MOUSE_MOVE])
   yield put(actions.setStatus());
   if (!result) {
     return
@@ -28,10 +28,19 @@ export function* selectItemSaga() {
   const items = yield getItems();
 
   const pickedItem = pickNearestItem(items, point, pickRadius);
-  if (pickedItem) {
-    yield put(actions.selectItem(pickedItem));
+
+  if (result.type === actionTypes.MOUSE_MOVE) {
+    if (pickedItem) {
+      yield put(actions.highlightItem(pickedItem));
+    } else {
+      yield put(actions.highlightItem());
+    }
   } else {
-    yield put(actions.unselectItems());
+    if (pickedItem) {
+      yield put(actions.selectItem(pickedItem));
+    } else {
+      yield put(actions.unselectItems());
+    }
   }
 
   yield put(actions.startInteraction(IA_SELECT_ITEM));
