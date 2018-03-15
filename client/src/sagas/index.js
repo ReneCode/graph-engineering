@@ -6,9 +6,8 @@ import * as userSagas from './userSagas'
 import * as projectSagas from './projectSagas'
 // import * as pageSagas from './pageSagas'
 
-import { generateLineSaga } from "./generateLineSaga";
-import { generateCircleSaga } from "./generateCircleSaga";
-import { selectItemSaga } from "./selectItemSaga";
+import { startInteractionSaga } from "./startInteractionSaga";
+
 
 const sagas = [
   takeLatest(actionTypes.LOGIN_USER, userSagas.loginUserSaga),
@@ -17,10 +16,12 @@ const sagas = [
   takeLatest(actionTypes.LOAD_PROJECTS, projectSagas.loadProjectsSaga),
   // takeLatest(actionTypes.LOAD_PAGES, pageSagas.loadPagesSaga),
 
-  takeLatest(actionTypes.GENERATE_LINE, generateLineSaga),
-  takeLatest(actionTypes.GENERATE_CIRCLE, generateCircleSaga),
+  takeLatest(actionTypes.START_INTERACTION, startInteractionSaga)
 
-  takeLatest(actionTypes.SELECT_ITEM, selectItemSaga)
+  // takeLatest(actionTypes.GENERATE_LINE, generateLineSaga),
+  // takeLatest(actionTypes.GENERATE_CIRCLE, generateCircleSaga),
+
+  // takeLatest(actionTypes.SELECT_ITEM, selectItemSaga)
 ]
 
 export default sagas

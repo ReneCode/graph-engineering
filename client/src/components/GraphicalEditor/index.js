@@ -12,6 +12,7 @@ import SvgCanvas from "./SvgCanvas";
 import Toolbar from "./Toolbar";
 import StatusBar from "./StatusBar";
 import ItemList from "./items/ItemList";
+import { IA_GENERATE_LINE, IA_GENERATE_CIRCLE, IA_SELECT_ITEM } from "../../actions/interactionTypes";
 
 const styles = theme => ({
   root: {
@@ -89,9 +90,9 @@ const mapDispatchToProps = dispatch => {
     mouseDown: ev => dispatch(actions.mouseDown(ev)),
     mouseUp: ev => dispatch(actions.mouseUp(ev)),
     mouseMove: ev => dispatch(actions.mouseMove(ev)),
-    generateLine: () => dispatch(actions.generateLine()),
-    generateCircle: () => dispatch(actions.generateCircle()),
-    selectItem: () => dispatch(actions.selectItem()),
+    generateLine: () => dispatch(actions.startInteraction(IA_GENERATE_LINE)),
+    generateCircle: () => dispatch(actions.startInteraction(IA_GENERATE_CIRCLE)),
+    selectItem: () => dispatch(actions.startInteraction(IA_SELECT_ITEM)),
     changeSelectedItem: (prop, value) => dispatch(actions.changeSelectedItem(prop, value))
   }
 }

@@ -6,6 +6,7 @@ import * as actions from '../actions'
 import ItemLine from '../models/ItemLine';
 
 import { getSVGPointSaga } from "./mouseSagas";
+import { IA_GENERATE_LINE } from '../actions/interactionTypes';
 
 export function* generateLineSaga() {
   yield put(actions.setStatus("Line: set first Point"));
@@ -38,8 +39,9 @@ export function* generateLineSaga() {
           const finalLine = new ItemLine(firstPoint, result.point)
           yield put(actions.addItem(finalLine))
           wait = false;
-          // restart interaction
-          // yield put(actions.startInteraction(interactionTypes.IA_RECTANGLE))
+
+          // restart saga
+          yield put(actions.startInteraction(IA_GENERATE_LINE));
         }
       }
     }

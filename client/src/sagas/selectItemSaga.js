@@ -6,6 +6,7 @@ import * as actions from '../actions'
 import pickNearestItem from "../utilities/pickNearestItem";
 
 import { getSVGPointSaga } from "./mouseSagas";
+import { IA_SELECT_ITEM } from '../actions/interactionTypes';
 
 function* getItems() {
   const getPageState = state => state.page;
@@ -28,4 +29,6 @@ export function* selectItemSaga() {
 
   const pickedItem = pickNearestItem(items, point, pickRadius);
   yield put(actions.setSelectedItem(pickedItem));
+
+  yield put(actions.startInteraction(IA_SELECT_ITEM));
 }

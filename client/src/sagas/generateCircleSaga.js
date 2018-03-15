@@ -5,6 +5,7 @@ import * as actions from '../actions'
 import ItemCircle from '../models/ItemCircle';
 
 import { getSVGPointSaga } from "./mouseSagas";
+import { IA_GENERATE_CIRCLE } from '../actions/interactionTypes';
 
 export function* generateCircleSaga() {
   yield put(actions.setStatus("Circle: set middle Point"));
@@ -42,7 +43,9 @@ export function* generateCircleSaga() {
           const radius = calcRadius(result.point);
           const finalCircle = new ItemCircle(firstPoint, radius)
           yield put(actions.addItem(finalCircle))
-          wait = false;
+
+          // restart saga
+          yield put(actions.startInteraction(IA_GENERATE_CIRCLE));
         }
       }
     }
