@@ -15,6 +15,13 @@ class ItemGroup extends ItemBase {
     return newGroup;
   }
 
+  move(delta) {
+    const newGroup = this.clone();
+    newGroup.items = this.items.map(item => item.move(delta));
+    return newGroup;
+
+  }
+
   pickDistance(point, pickRadius) {
     let minDistance;
 

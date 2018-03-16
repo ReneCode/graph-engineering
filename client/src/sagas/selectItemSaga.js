@@ -14,10 +14,40 @@ function* getItems() {
   return pageState.items;
 }
 
+function* getSelectedItems() {
+  const getPageState = state => state.page;
+  const pageState = yield select(getPageState);
+  return pageState.selectedItems;
+}
+
+function* moveSelectedItemsSaga(lastPoint) {
+  let wait = true;
+  while (wait) {
+    const result = yield getSVGPointSaga([actionTypes.MOUSE_MOVE, actionTypes.MOUSE_UP]);
+    if (!result) {
+      return;
+    }
+    const delta = result.point.sub(lastPoint);
+    switch (result.type) {
+      case actionTypes.MOUSE_UP:
+        wait = false;
+        break;
+      case actionTypes.MOUSE_MOVE:
+        yield put(actions.moveSelectedItems(delta));
+        lastPoint = result.point;
+        break;
+
+      default:
+        throw new Error("bad type")
+    }
+  }
+}
+
+
 export function* selectItemSaga() {
   yield put(actions.setStatus("SelectItem"));
 
-  const result = yield getSVGPointSaga([actionTypes.MOUSE_DOWN, actionTypes.MOUSE_MOVE])
+  const result = yield getSVGPointSaga(actionTypes.MOUSE_DOWN)
   yield put(actions.setStatus());
   if (!result) {
     return
@@ -25,20 +55,22 @@ export function* selectItemSaga() {
 
   const pickRadius = 10;
   const { point } = result;
-  const items = yield getItems();
 
-  const pickedItem = pickNearestItem(items, point, pickRadius);
-
-  if (result.type === actionTypes.MOUSE_MOVE) {
-    if (pickedItem) {
-      yield put(actions.highlightItem(pickedItem));
-    } else {
-      yield put(actions.highlightItem());
-    }
+  const selectedItems = yield getSelectedItems();
+  const pickedItem = pickNearestItem(selectedItems, point, pickRadius);
+  if (pickedItem) {
+    // item was already selected
+    yield moveSelectedItemsSaga(point);
   } else {
+    const items = yield getItems();
+    const pickedItem = pickNearestItem(items, point, pickRadius);
+
     if (pickedItem) {
+      // new Item picked
       yield put(actions.selectItem(pickedItem));
+      yield moveSelectedItemsSaga(point);
     } else {
+      // no Item picked
       yield put(actions.unselectItems());
     }
   }

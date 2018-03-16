@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import Line from "./Line";
 import Circle from "./Circle";
@@ -19,15 +20,12 @@ const Item = props => {
     };
   }
 
-  if (item.isHighlighted()) {
+  if (item === props.highlightItem) {
     style.strokeWidth = 5;
     style.strokeDasharray= "5,5";
-    style.animation= "dashOffsetAnimation 0.3s infinite";
+    style.animation= "dashOffsetAnimation 0.2s infinite";
     style.animationTimingFunction = "linear";
-
   }
-
-
 
   if (item instanceof ItemLine) {
     return (
@@ -51,4 +49,10 @@ const Item = props => {
   // <path d="M150 40 L75 200 L225 200 Z" />
 }
 
-export default Item;
+const mapStateToProps = state => {
+  return {
+    highlightItem: state.page.highlightItem
+  };
+}
+
+export default connect(mapStateToProps)(Item);

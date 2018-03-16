@@ -20,6 +20,13 @@ class ItemLine extends ItemBase {
     return newLine
   }
 
+  move(delta) {
+    const newLine = this.clone();
+    newLine.p1 = this.p1.add(delta);
+    newLine.p2 = this.p2.add(delta);
+    return newLine;
+  }
+
   setFromTwoPoints(p1, p2) {
     this.p1 = p1;
     this.p2 = p2;

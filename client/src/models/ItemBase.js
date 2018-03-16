@@ -17,7 +17,11 @@ class ItemBase {
   // return { distance: 123 }  if pickable
   // else return null
   pickDistance(point, radius) {
-    throw new Error("pickDistance method missing")
+    throw new Error("pickDistance method missing");
+  }
+
+  move(delta) {
+    throw new Error("move method missing");
   }
 
   change(prop, value) {

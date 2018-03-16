@@ -42,6 +42,13 @@ export const groupSelectedItems = () => {
   }
 }
 
+export const moveSelectedItems = (delta) => {
+  return {
+    type: actionTypes.MOVE_SELECTED_ITEMS,
+    delta
+  }
+}
+
 // export const unGroupSelectedItems = () => {
 //   return {
 //     type: actionTypes.UNGROUP_SELECTED_ITEMS

@@ -6,6 +6,7 @@ import ItemGroup from "../models/ItemGroup";
 import Point from "../models/Point";
 
 const initialState = {
+  highlightItem: undefined,
   selectedItems: [],
   dynamicItems: [],
   items: [
@@ -77,44 +78,58 @@ const changeSelectedItem = (state, action) => {
 const groupSelectedItems = (state, action) => {
   return {
     ...state,
-    selectedItems: [ new ItemGroup(state.selectedItems) ]
+    selectedItems: [new ItemGroup(state.selectedItems)]
   };
 }
 
-const highlightItem = (state, action) => {
-  if (action.item) {
-    return {
-      ...state,
-      items: state.items.map(item => {
-        if (item !== action.item) {
-          if (item.isHighlighted) {
-            let newItem = item.clone();
-            newItem.setHighlight(false);
-            return newItem;          
-          } else {
-            return item;
-          }
-        } else {
-          let newItem = item.clone();
-          newItem.setHighlight(true);
-          return newItem;
-        }
-      })
-    }
-  } else {
-    return {
-      ...state,
-      items: state.items.map(item => {
-        if (item.isHighlighted) {
-          let newItem = item.clone();
-          newItem.setHighlight(false);
-          return newItem;          
-        } else {
-          return item;
-        }
-      })
-    }
+
+const moveSelectedItems = (state, action) => {
+  return {
+    ...state,
+    selectedItems: state.selectedItems.map(item => item.move(action.delta))
   }
+}
+
+const highlightItem = (state, action) => {
+
+  return {
+    ...state,
+    highlightItem: action.item
+  };
+
+  // if (action.item) {
+  //   return {
+  //     ...state,
+  //     items: state.items.map(item => {
+  //       if (item !== action.item) {
+  //         if (item.isHighlighted) {
+  //           let newItem = item.clone();
+  //           newItem.setHighlight(false);
+  //           return newItem;          
+  //         } else {
+  //           return item;
+  //         }
+  //       } else {
+  //         let newItem = item.clone();
+  //         newItem.setHighlight(true);
+  //         return newItem;
+  //       }
+  //     })
+  //   }
+  // } else {
+  //   return {
+  //     ...state,
+  //     items: state.items.map(item => {
+  //       if (item.isHighlighted) {
+  //         let newItem = item.clone();
+  //         newItem.setHighlight(false);
+  //         return newItem;          
+  //       } else {
+  //         return item;
+  //       }
+  //     })
+  //   }
+  // }
 }
 
 const pageReducer = (state = initialState, action) => {
@@ -146,7 +161,10 @@ const pageReducer = (state = initialState, action) => {
     case actionTypes.GROUP_SELECTED_ITEMS:
       return groupSelectedItems(state, action);
 
-      case actionTypes.HIGHLIGHT_ITEM:
+    case actionTypes.MOVE_SELECTED_ITEMS:
+      return moveSelectedItems(state, action);
+
+    case actionTypes.HIGHLIGHT_ITEM:
       return highlightItem(state, action);
 
     default:

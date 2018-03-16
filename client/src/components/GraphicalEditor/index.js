@@ -12,7 +12,7 @@ import SvgCanvas from "./SvgCanvas";
 import Toolbar from "./Toolbar";
 import StatusBar from "./StatusBar";
 import ItemList from "./items/ItemList";
-import { IA_GENERATE_LINE, IA_GENERATE_CIRCLE, IA_SELECT_ITEM } from "../../actions/interactionTypes";
+import { IA_GENERATE_LINE, IA_GENERATE_CIRCLE, IA_SELECT_ITEM, IA_CONNECT_ITEMS } from "../../actions/interactionTypes";
 
 const styles = theme => ({
   root: {
@@ -65,6 +65,7 @@ class GraphicalEditor extends Component {
             { click: this.props.generateLine, text:"line"},
             { click: this.props.generateCircle, text: "circle" },
             { click: this.props.groupSelectedItems, text: "group" },
+            { click: this.props.connectItems, text: "connect" },
             // { click: this.props.unGroupSelectedItems, text: "unGrp" },
             { click: this.props.selectItem, text: "select" }
           ]} />
@@ -97,6 +98,7 @@ const mapDispatchToProps = dispatch => {
     selectItem: () => dispatch(actions.startInteraction(IA_SELECT_ITEM)),
     changeSelectedItem: (prop, value) => dispatch(actions.changeSelectedItem(prop, value)),
     groupSelectedItems: () => dispatch(actions.groupSelectedItems()),
+    connectItems: () => dispatch(actions.startInteraction(IA_CONNECT_ITEMS))
     // unGroupSelectedItems: () => dispatch(actions.unGroupSelectedItems())
   }
 }

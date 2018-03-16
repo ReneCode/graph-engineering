@@ -30,6 +30,12 @@ class ItemCircle extends ItemBase {
       return null;
     }
   }
+
+  move(delta) {
+    let newCircle = this.clone();
+    newCircle.p = newCircle.p.add(delta);
+    return newCircle;
+  }
 }
 
 export default ItemCircle;
