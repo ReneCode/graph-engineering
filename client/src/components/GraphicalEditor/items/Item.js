@@ -20,12 +20,12 @@ const Item = props => {
     };
   }
 
-  if (item === props.highlightItem) {
-    style.strokeWidth = 5;
-    style.strokeDasharray= "5,5";
-    style.animation= "dashOffsetAnimation 0.2s infinite";
-    style.animationTimingFunction = "linear";
-  }
+  // if (item === props.highlightItem) {
+  //   style.strokeWidth = 5;
+  //   style.strokeDasharray= "5,5";
+  //   style.animation= "dashOffsetAnimation 0.2s infinite";
+  //   style.animationTimingFunction = "linear";
+  // }
 
   if (item instanceof ItemLine) {
     return (
@@ -34,6 +34,7 @@ const Item = props => {
   }
 
   if (item instanceof ItemCircle) {
+
     return (
       <Circle item={item} style={style} />
     )
@@ -55,4 +56,5 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps)(Item);
+// export default connect(mapStateToProps)(Item);
+export default Item;

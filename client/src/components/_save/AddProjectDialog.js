@@ -22,7 +22,6 @@ class AddProjectDialog extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("X:", nextProps)
     this.setState({
       open: nextProps.open
     })
