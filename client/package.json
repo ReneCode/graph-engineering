@@ -26,7 +26,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src/",
-    "jest": "jest src/",
-    "x": "react-scripts"
+    "jest": "jest src/"
   }
 }

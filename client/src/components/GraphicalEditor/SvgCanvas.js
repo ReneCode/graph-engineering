@@ -5,7 +5,6 @@ import React from "react";
 const SvgCanvas = props => {
   const style = {
     backgroundColor: "lightgrey",
-    margin: "5px",
     height: "400px",
     width: "100%"
   };

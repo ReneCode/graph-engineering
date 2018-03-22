@@ -6,9 +6,12 @@
   "scripts": {
     "start": "node src/app.js",
     "start:w": "nodemon src/app.js",
-    "test": "jest ./src/"
+    "test": "jest ./src/",
+    "cypress:open": "cypress open"
+    
   },
   "devDependencies": {
+    "cypress": "^2.1.0",
     "jest": "^22.3.0",
     "nodemon": "^1.15.0"
   },

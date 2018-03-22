@@ -39,9 +39,9 @@ class PropertyBar extends Component {
     return (
       <div style={style}>
         <div>Color</div>
-        <input type="text" value={item.color} onChange={(ev) => this.props.changeValue("color", ev.target.value)} />
+        <input type="text" id="prop-color" value={item.color} onChange={(ev) => this.props.changeValue("color", ev.target.value)} />
         <div>Width</div>
-        <input type="text" value={item.strokeWidth} onChange={(ev) => this.props.changeValue("strokeWidth", ev.target.value)} />
+        <input type="text" id="prop-width" value={item.strokeWidth} onChange={(ev) => this.props.changeValue("strokeWidth", ev.target.value)} />
       </div>
     );
   }

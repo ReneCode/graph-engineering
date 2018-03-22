@@ -33,7 +33,7 @@ const Toolbar = (props) => {
     // otherwise the svg-element would also receive that
     // event.
     buttons.push(
-      <g key={i} 
+      <g key={i} className={"toolbar-" + button.text}
         onClick={button.click} 
         onMouseDown={ e => e.stopPropagation() } 
         onMouseUp={ e => e.stopPropagation() } 
