@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 import Line from "./Line";
 import Circle from "./Circle";
@@ -50,11 +50,11 @@ const Item = props => {
   // <path d="M150 40 L75 200 L225 200 Z" />
 }
 
-const mapStateToProps = state => {
-  return {
-    highlightItem: state.page.highlightItem
-  };
-}
+// const mapStateToProps = state => {
+//   return {
+//     highlightItem: state.page.highlightItem
+//   };
+// }
 
 // export default connect(mapStateToProps)(Item);
 export default Item;

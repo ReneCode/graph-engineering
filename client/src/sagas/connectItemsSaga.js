@@ -33,6 +33,9 @@ export function* connectItemsSaga() {
   yield put(actions.setStatus("Connect Items"));
 
   const firstItem = yield pickItem();
+  if (!firstItem)  {
+    return;
+  }
   yield put(actions.setStatus());
 
   // if (result.type === actionTypes.MOUSE_MOVE) {
