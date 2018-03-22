@@ -29,3 +29,6 @@ after_success:
   - cd client
   - firebase deploy --token $FIREBASE_TOKEN
 
+notifications:
+    slack: team-cs2:U88OxB1DxzsOl0P1VHz20wwU
+    
