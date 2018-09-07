@@ -7,3 +7,10 @@ export const setStatus = status => {
     status
   }
 }
+
+export const setExceptionMessageAction = (exceptionMessage) => {
+  return {
+    type: actionTypes.SET_EXCEPTION,
+    exceptionMessage: exceptionMessage
+  }
+}

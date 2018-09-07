@@ -2,7 +2,8 @@
 import * as actionTypes from "../actionTypes";
 
 const initialState = {
-  status: ""
+  status: "",
+  exceptionMessage: undefined
 }
 
 function statusReducer(state = initialState, action) {
@@ -11,6 +12,12 @@ function statusReducer(state = initialState, action) {
       return {
         ...state,
         status: action.status
+      };
+
+    case actionTypes.SET_EXCEPTION:
+      return {
+        ...state,
+        exceptionMessage: action.exceptionMessage
       };
 
     default:

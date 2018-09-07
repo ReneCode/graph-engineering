@@ -35,3 +35,5 @@ export const START_INTERACTION = "START_INTERACTION";
 export const MOUSE_MOVE = "MOUSE_MOVE";
 export const MOUSE_DOWN = "MOUSE_DOWN";
 export const MOUSE_UP = "MOUSE_UP";
+
+export const SET_EXCEPTION = "SET_EXCEPTION";

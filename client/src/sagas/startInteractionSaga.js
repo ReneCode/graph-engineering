@@ -1,4 +1,4 @@
-import { call } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 
 import { generateLineSaga } from "./generateLineSaga";
 import { generateCircleSaga } from "./generateCircleSaga";
@@ -6,9 +6,10 @@ import { selectItemSaga } from "./selectItemSaga";
 import { connectItemsSaga } from "./connectItemsSaga";
 
 import { IA_GENERATE_CIRCLE, IA_GENERATE_LINE, IA_SELECT_ITEM, IA_CONNECT_ITEMS } from "../actions/interactionTypes";
+import * as actions from "../actions";
 
 
-export function* startInteractionSaga({ interactionType }) {
+function* startInteraction(interactionType) {
   switch (interactionType) {
     case IA_GENERATE_CIRCLE:
       yield call(generateCircleSaga);
@@ -24,7 +25,16 @@ export function* startInteractionSaga({ interactionType }) {
       break;
 
     default:
-      throw new Error("unhandled interaction type:", interactionType);
+      throw new Error(`unhandled interaction type: ${interactionType}`);
   }
+}
+
+export function* startInteractionSaga({ interactionType }) {
+  try {
+    yield startInteraction(interactionType);
+  } catch(exception) {
+    yield put( actions.setExceptionMessageAction(exception.message) );
+  }
+
 
 }

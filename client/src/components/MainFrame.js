@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 
 import Routing from "./Routing"
+import Notifications from "./Notifications"
 
 const styles = {
   root: {
@@ -17,6 +18,7 @@ const MainFrame = ({ classes }) => {
       <div className={classes.root}>
         <div className="main-frame">
           <Routing />
+          <Notifications />
         </div>
       </div>
     </Router>
