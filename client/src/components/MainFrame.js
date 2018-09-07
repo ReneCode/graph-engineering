@@ -1,7 +1,7 @@
 
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { withStyles } from "material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 import Routing from "./Routing"
 
