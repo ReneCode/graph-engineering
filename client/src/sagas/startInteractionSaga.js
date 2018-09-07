@@ -22,8 +22,9 @@ export function* startInteractionSaga({ interactionType }) {
     case IA_CONNECT_ITEMS:
       yield call(connectItemsSaga);
       break;
-      
+
     default:
+      throw new Error("unhandled interaction type:", interactionType);
   }
 
 }

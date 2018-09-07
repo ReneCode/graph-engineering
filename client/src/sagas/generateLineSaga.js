@@ -1,7 +1,6 @@
 import { put, cancelled } from 'redux-saga/effects'
 
 import * as actionTypes from '../actionTypes'
-// import * as interactionTypes from '../interactions/interactionTypes'
 import * as actions from '../actions'
 import ItemLine from '../models/ItemLine';
 
@@ -26,23 +25,29 @@ export function* generateLineSaga() {
       if (!result) {
         return
       }
-      if (result.type === actionTypes.MOUSE_MOVE) {
-        // rubberband on mouse move
-        line.setFromTwoPoints(firstPoint, result.point)
-        yield put(actions.setDynamicItem(line))
-      } else {
-        yield put(actions.setStatus());
-        yield put(actions.removeDynamicItem(line))
-        if (firstPoint.equal(result.point)) {
-          wait = false
-        } else {
-          const finalLine = new ItemLine(firstPoint, result.point)
-          yield put(actions.addItem(finalLine))
-          wait = false;
+      switch (result.type) {
+        case actionTypes.MOUSE_MOVE:
+          // rubberband on mouse move
+          line.setFromTwoPoints(firstPoint, result.point)
+          yield put(actions.setDynamicItem(line))
+          break;
 
-          // restart saga
-          yield put(actions.startInteraction(IA_GENERATE_LINE));
-        }
+        case actionTypes.MOUSE_UP:
+          yield put(actions.setStatus());
+          yield put(actions.removeDynamicItem(line))
+          if (firstPoint.equal(result.point)) {
+            wait = false
+          } else {
+            const finalLine = new ItemLine(firstPoint, result.point)
+            yield put(actions.addItem(finalLine))
+            wait = false;
+
+            // restart saga
+            yield put(actions.startInteraction(IA_GENERATE_LINE));
+          }
+          break;
+        default:
+          throw new Error("bad type:", result.type);
       }
     }
   } finally {
