@@ -1,7 +1,6 @@
 import Point from "./Point";
 
 import ItemBase from "./ItemBase";
-import distanceLineToPoint from "../utilities/distanceLineToPoint";
 import Line from "./Line";
 
 class ItemLine extends ItemBase {
