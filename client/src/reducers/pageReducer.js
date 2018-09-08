@@ -73,7 +73,10 @@ const unselectItems = (state, action) => {
 const changeSelectedItem = (state, action) => {
   return {
     ...state,
-    selectedItems: state.selectedItems.map(item => item.change(action.prop, action.value))
+    selectedItems: state.selectedItems.map(item => {
+      item.change(action.prop, action.value)
+      return item
+    })
   };
 }
 
