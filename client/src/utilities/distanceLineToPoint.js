@@ -3,8 +3,8 @@ import Point from "../models/Point";
 
 function distanceLinePoint(line, point) {
   /*
-    line: p1, p2
-    point: c
+    line: p1 {x,y}, p2 { x,y }
+    point: { x,y }
   */
 
   const p1 = { x: line.p1.x, y: line.p1.y, z: 0 };

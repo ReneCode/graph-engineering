@@ -22,24 +22,27 @@ const initialState = {
   ]
 }
 
-const setDynamicItem = (state, action) => {
-  const foundIndex = state.dynamicItems.indexOf(action.item)
-  if (foundIndex < 0) {
-    // not found - append new item
-    return {
-      ...state,
-      dynamicItems: state.dynamicItems.concat(action.item)
-    }
-  } else {
-    // update item
+const exchangeDynamicItem = (state, action) => {
+  const itemIndex = state.dynamicItems.indexOf(action.item)
+  if (itemIndex >= 0) {
     return {
       ...state,
       dynamicItems: [
-        ...state.dynamicItems.slice(0, foundIndex),
+        ...state.dynamicItems.slice(0, itemIndex),
         action.item,
-        ...state.dynamicItems.slice(foundIndex + 1)
+        ...state.dynamicItems.slice(itemIndex + 1)
       ]
     }
+  } else {
+    console.error("exchangeDynamicItem: item not found")
+    return state
+  }
+}
+
+const addDynamicItem = (state, action) => {
+  return {
+    ...state,
+    dynamicItems: state.dynamicItems.concat(action.item)
   }
 }
 
@@ -70,7 +73,10 @@ const unselectItems = (state, action) => {
 const changeSelectedItem = (state, action) => {
   return {
     ...state,
-    selectedItems: state.selectedItems.map(item => item.change(action.prop, action.value))
+    selectedItems: state.selectedItems.map(item => {
+      item.change(action.prop, action.value)
+      return item
+    })
   };
 }
 
@@ -86,7 +92,10 @@ const groupSelectedItems = (state, action) => {
 const moveSelectedItems = (state, action) => {
   return {
     ...state,
-    selectedItems: state.selectedItems.map(item => item.move(action.delta))
+    selectedItems: state.selectedItems.map(item => {
+      item.move(action.delta)
+      return item
+    })
   }
 }
 
@@ -140,8 +149,11 @@ const pageReducer = (state = initialState, action) => {
         items: state.items.concat(action.item)
       }
 
-    case actionTypes.SET_DYNAMIC_ITEM:
-      return setDynamicItem(state, action);
+    case actionTypes.EXCHANGE_DYNAMIC_ITEM:
+      return exchangeDynamicItem(state, action)
+
+    case actionTypes.ADD_DYNAMIC_ITEM:
+      return addDynamicItem(state, action);
 
     case actionTypes.REMOVE_DYNAMIC_ITEM:
       return {

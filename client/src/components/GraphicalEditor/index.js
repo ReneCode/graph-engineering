@@ -61,9 +61,12 @@ class GraphicalEditor extends Component {
     return (
       <div className={classes.root}>
         <SvgCanvas
-          mouseDown={ev => this.props.mouseDown(ev)}
-          mouseUp={ev => this.props.mouseUp(ev)}
-          mouseMove={ev => this.props.mouseMove(ev)}
+          onMouseDown={ev => this.props.mouseDown(ev)}
+          onMouseUp={ev => this.props.mouseUp(ev)}
+          onMouseMove={ev => this.props.mouseMove(ev)}
+          onTouchStart={ev => this.props.touchStart(ev)}
+          onTouchMove={ev => this.props.touchMove(ev)}
+          onTouchEnd={ev => this.props.touchEnd(ev)}
         >
           <StatusBar text={this.props.status} />
           <Toolbar buttons={[
@@ -99,6 +102,9 @@ const mapDispatchToProps = dispatch => {
     mouseDown: ev => dispatch(actions.mouseDown(ev)),
     mouseUp: ev => dispatch(actions.mouseUp(ev)),
     mouseMove: ev => dispatch(actions.mouseMove(ev)),
+    touchStart: ev => dispatch(actions.touchStart(ev)),
+    touchMove: ev => dispatch(actions.touchMove(ev)),
+    touchEnd: ev => dispatch(actions.touchEnd(ev)),
     generateRectangle: () => dispatch(actions.startInteraction(IA_GENERATE_RECTANGLE)),
     generateLine: () => dispatch(actions.startInteraction(IA_GENERATE_LINE)),
     generateCircle: () => dispatch(actions.startInteraction(IA_GENERATE_CIRCLE)),

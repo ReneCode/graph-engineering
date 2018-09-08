@@ -15,7 +15,9 @@ export function* generateCircleSaga() {
     return
   }
   const firstPoint = result.point
-  let circle = new ItemCircle(firstPoint, 0)
+  let circle = new ItemCircle(firstPoint)
+  circle.setRadius(0)
+  yield put(actions.addDynamicItem(circle))
 
   const calcRadius = p2 => {
     return p2.sub(firstPoint).length();
@@ -33,7 +35,7 @@ export function* generateCircleSaga() {
         // rubberband on mouse move
         
         circle.setRadius(calcRadius(result.point));
-        yield put(actions.setDynamicItem(circle))
+        yield put(actions.exchangeDynamicItem(circle))
       } else {
         yield put(actions.setStatus());
         yield put(actions.removeDynamicItem(circle))

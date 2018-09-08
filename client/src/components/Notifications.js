@@ -43,7 +43,7 @@ class Notification extends React.Component {
         }}
         message={<span id="message-id">{this.props.exceptionMessage}</span>}
         action={[
-          <Button color="secondary" size="small" onClick={this.handleClose}>
+          <Button key="button" color="secondary" size="small" onClick={this.handleClose}>
             Close
             </Button>,
           <IconButton

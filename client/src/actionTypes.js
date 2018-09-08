@@ -17,7 +17,8 @@ export const ADD_ITEM = "ADD_ITEM";
 
 export const CHANGE_SELECTED_ITEM = "CHANGE_SELECTED_ITEM";
 
-export const SET_DYNAMIC_ITEM = "SET_DYNAMIC_ITEM"; 
+export const ADD_DYNAMIC_ITEM = "ADD_DYNAMIC_ITEM"; 
+export const EXCHANGE_DYNAMIC_ITEM = "EXCHANGE_DYNAMIC_ITEM"; 
 export const REMOVE_DYNAMIC_ITEM = "REMOVE_DYNAMIC_ITEM"; 
 
 export const SELECT_ITEM = "SELECT_ITEM";
@@ -35,5 +36,9 @@ export const START_INTERACTION = "START_INTERACTION";
 export const MOUSE_MOVE = "MOUSE_MOVE";
 export const MOUSE_DOWN = "MOUSE_DOWN";
 export const MOUSE_UP = "MOUSE_UP";
+
+export const TOUCH_START = "TOUCH_START"
+export const TOUCH_MOVE = "TOUCH_MOVE"
+export const TOUCH_END = "TOUCH_END"
 
 export const SET_EXCEPTION = "SET_EXCEPTION";

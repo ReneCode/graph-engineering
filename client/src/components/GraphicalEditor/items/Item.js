@@ -4,10 +4,12 @@ import React from "react";
 import Line from "./Line";
 import Circle from "./Circle";
 import Group from "./Group";
+import Rectangle from "./Rectangle"
 
 import ItemLine from "../../../models/ItemLine";
 import ItemCircle from "../../../models/ItemCircle";
 import ItemGroup from "../../../models/ItemGroup";
+import ItemRectangle from "../../../models/ItemRectangle";
 
 const Item = props => {
   const { item, noStyle } = props;
@@ -39,12 +41,20 @@ const Item = props => {
       <Circle item={item} style={style} />
     )
   }
+  if (item instanceof ItemRectangle) {
+    return (
+      <Rectangle item={item} style={style} />
+    )
+  }
 
   if (item instanceof ItemGroup) {
     return (
       <Group item={item} style={style} />
     )
   }
+
+  console.log(`unknown item class:${item.constructor.name}`)
+
 
   return null;
   // <path d="M150 40 L75 200 L225 200 Z" />
