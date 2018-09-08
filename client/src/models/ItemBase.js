@@ -25,9 +25,7 @@ class ItemBase {
   }
 
   change(prop, value) {
-    const newObject = this.clone();
-    newObject[prop] = value;
-    return newObject;
+    this[prop] = value;
   }
 
   setHighlight(highlight = true) {

@@ -7,19 +7,16 @@ class ItemGroup extends ItemBase {
     this.items = items;
   }
 
-  clone() {
-    const newGroup = new ItemGroup();
-    const clone = JSON.parse(JSON.stringify(this))
-    Object.assign(newGroup, clone);
-    newGroup.items = this.items.map(item => item.clone());
-    return newGroup;
-  }
+  // clone() {
+  //   const newGroup = new ItemGroup();
+  //   const clone = JSON.parse(JSON.stringify(this))
+  //   Object.assign(newGroup, clone);
+  //   newGroup.items = this.items.map(item => item.clone());
+  //   return newGroup;
+  // }
 
   move(delta) {
-    const newGroup = this.clone();
-    newGroup.items = this.items.map(item => item.move(delta));
-    return newGroup;
-
+    this.items.forEach(item => item.move(delta));
   }
 
   pickDistance(point, pickRadius) {

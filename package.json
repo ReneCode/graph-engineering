@@ -8,7 +8,6 @@
     "start:w": "nodemon src/app.js",
     "test": "jest ./src/",
     "cypress:open": "cypress open"
-    
   },
   "devDependencies": {
     "cypress": "^2.1.0",
@@ -21,6 +20,7 @@
     "documentdb": "^1.14.2",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "uuid": "^3.3.2"
   }
 }

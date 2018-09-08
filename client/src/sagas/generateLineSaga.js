@@ -16,6 +16,7 @@ export function* generateLineSaga() {
   }
   const firstPoint = result.point
   let line = new ItemLine(firstPoint, firstPoint)
+  yield put(actions.addDynamicItem(line))
 
   try {
     let wait = true
@@ -29,7 +30,7 @@ export function* generateLineSaga() {
         case actionTypes.MOUSE_MOVE:
           // rubberband on mouse move
           line.setFromTwoPoints(firstPoint, result.point)
-          yield put(actions.setDynamicItem(line))
+          yield put(actions.exchangeDynamicItem(line))
           break;
 
         case actionTypes.MOUSE_UP:
@@ -47,7 +48,8 @@ export function* generateLineSaga() {
           }
           break;
         default:
-          throw new Error("bad type:", result.type);
+          debugger
+          throw new Error(`bad type: ${result.type}`);
       }
     }
   } finally {

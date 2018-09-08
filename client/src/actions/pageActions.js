@@ -1,9 +1,16 @@
 
 import  * as actionTypes from "../actionTypes";
 
-export const setDynamicItem = item => {
+export const addDynamicItem = item => {
   return {
-    type: actionTypes.SET_DYNAMIC_ITEM,
+    type: actionTypes.ADD_DYNAMIC_ITEM,
+    item
+  }
+}
+
+export const exchangeDynamicItem = item => {
+  return {
+    type: actionTypes.EXCHANGE_DYNAMIC_ITEM,
     item
   }
 }
