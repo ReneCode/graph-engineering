@@ -3,9 +3,11 @@ import * as actionTypes from '../actionTypes'
 import ItemLine from "../models/ItemLine";
 import ItemCircle from "../models/ItemCircle";
 import ItemGroup from "../models/ItemGroup";
+import ItemRectangle from "../models/ItemRectangle"
 import Point from "../models/Point";
 
 const initialState = {
+  pickRadius: 10,
   highlightItem: undefined,
   selectedItems: [],
   dynamicItems: [],
@@ -15,6 +17,7 @@ const initialState = {
       new ItemCircle(new Point(200, 80), 40),
       new ItemCircle(new Point(200, 80), 60)
     ]),
+    new ItemRectangle(new Point(150, 70), new Point(240, 190), {color:"gray"}),
     new ItemLine(new Point(90, 90), new Point(120, 120), { color: "blue " }),
     new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
     new ItemLine(new Point(80, 80), new Point(150, 250), { color: "green" }),

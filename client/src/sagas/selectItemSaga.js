@@ -3,6 +3,7 @@ import { put, select } from 'redux-saga/effects'
 import * as actionTypes from '../actionTypes'
 import * as actions from '../actions'
 
+import { getPickRadius } from "./select";
 import pickNearestItem from "../utilities/pickNearestItem";
 
 import { getSVGPointSaga } from "./mouseSagas";
@@ -53,7 +54,7 @@ export function* selectItemSaga() {
     return
   }
 
-  const pickRadius = 10;
+  const pickRadius = getPickRadius();
   const { point } = result;
 
   const selectedItems = yield getSelectedItems();
