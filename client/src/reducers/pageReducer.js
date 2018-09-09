@@ -8,20 +8,22 @@ import Point from "../models/Point";
 
 const initialState = {
   pickRadius: 10,
+  translateSelectedItems: new Point(0, 0),
   highlightItem: undefined,
   selectedItems: [],
   dynamicItems: [],
   items: [
-
-    new ItemGroup([
-      new ItemCircle(new Point(200, 80), 40),
-      new ItemCircle(new Point(200, 80), 60)
-    ]),
-    new ItemRectangle(new Point(150, 70), new Point(240, 190), {color:"gray"}),
+    /*
+        new ItemGroup([
+          new ItemCircle(new Point(200, 80), 40),
+          new ItemCircle(new Point(200, 80), 60)
+        ]),
+        new ItemRectangle(new Point(150, 70), new Point(240, 190), {color:"gray"}),
+        */
     new ItemLine(new Point(90, 90), new Point(120, 120), { color: "blue " }),
-    new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
-    new ItemLine(new Point(80, 80), new Point(150, 250), { color: "green" }),
-    new ItemCircle(new Point(130, 130), 60, { color: "#d7d" })
+    // new ItemLine(new Point(80, 80), new Point(250, 150), { color: "yellow" }),
+    // new ItemLine(new Point(80, 80), new Point(150, 250), { color: "green" }),
+    // new ItemCircle(new Point(130, 130), 60, { color: "#d7d" })
   ]
 }
 
@@ -96,8 +98,9 @@ const moveSelectedItems = (state, action) => {
   return {
     ...state,
     selectedItems: state.selectedItems.map(item => {
-      item.move(action.delta)
-      return item
+      const newItem = item.clone()
+      newItem.move(action.delta)
+      return newItem;
     })
   }
 }
@@ -181,6 +184,12 @@ const pageReducer = (state = initialState, action) => {
 
     case actionTypes.HIGHLIGHT_ITEM:
       return highlightItem(state, action);
+
+    case actionTypes.TRANSLATE_SELECTED_ITEMS:
+      return {
+        ...state,
+        translateSelectedItems: action.payload
+      }
 
     default:
       return state

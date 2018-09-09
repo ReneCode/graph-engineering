@@ -10,13 +10,13 @@ class ItemCircle extends ItemBase {
     this.radius = radius || 50;
   }
 
-  // clone() {
-  //   const newCircle = new ItemCircle()
-  //   const clone = JSON.parse(JSON.stringify(this))
-  //   Object.assign(newCircle, clone)
-  //   newCircle.p = this.p.clone();
-  //   return newCircle
-  // }
+  clone() {
+    const newCircle = new ItemCircle()
+    const clone = JSON.parse(JSON.stringify(this))
+    Object.assign(newCircle, clone)
+    newCircle.p = this.p.clone();
+    return newCircle
+  }
 
   setRadius(radius) {
     this.radius = radius;

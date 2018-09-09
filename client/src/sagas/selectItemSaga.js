@@ -31,9 +31,11 @@ function* moveSelectedItemsSaga(lastPoint) {
     const delta = result.point.sub(lastPoint);
     switch (result.type) {
       case actionTypes.MOUSE_UP:
+        yield put(actions.moveSelectedItems(delta));
         wait = false;
         break;
       case actionTypes.MOUSE_MOVE:
+        // yield put(action.translateSelectedItems(delta))
         yield put(actions.moveSelectedItems(delta));
         lastPoint = result.point;
         break;
