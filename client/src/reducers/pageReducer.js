@@ -1,9 +1,9 @@
 
 import * as actionTypes from '../actionTypes'
 import ItemLine from "../models/ItemLine";
-import ItemCircle from "../models/ItemCircle";
+// import ItemCircle from "../models/ItemCircle";
 import ItemGroup from "../models/ItemGroup";
-import ItemRectangle from "../models/ItemRectangle"
+// import ItemRectangle from "../models/ItemRectangle"
 import Point from "../models/Point";
 
 const initialState = {
