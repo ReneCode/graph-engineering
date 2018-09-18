@@ -12,12 +12,13 @@ import SvgCanvas from "./SvgCanvas";
 import Toolbar from "./Toolbar";
 import StatusBar from "./StatusBar";
 import ItemList from "./items/ItemList";
-import { 
+import {
   IA_GENERATE_RECTANGLE,
-  IA_GENERATE_LINE, 
-  IA_GENERATE_CIRCLE, 
-  IA_SELECT_ITEM, 
-  IA_CONNECT_ITEMS } from "../../actions/interactionTypes";
+  IA_GENERATE_LINE,
+  IA_GENERATE_CIRCLE,
+  IA_SELECT_ITEM,
+  IA_CONNECT_ITEMS
+} from "../../actions/interactionTypes";
 
 const styles = theme => ({
   root: {
@@ -56,7 +57,7 @@ const styles = theme => ({
 
 class GraphicalEditor extends Component {
 
-  render() { 
+  render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
@@ -70,8 +71,8 @@ class GraphicalEditor extends Component {
         >
           <StatusBar text={this.props.status} />
           <Toolbar buttons={[
-            { click: this.props.generateRectangle, text:"rectangle"},
-            { click: this.props.generateLine, text:"line"},
+            { click: this.props.generateRectangle, text: "rectangle" },
+            { click: this.props.generateLine, text: "line" },
             { click: this.props.generateCircle, text: "circle" },
             { click: this.props.groupSelectedItems, text: "group" },
             { click: this.props.connectItems, text: "connect" },
@@ -80,7 +81,9 @@ class GraphicalEditor extends Component {
           ]} />
           <ItemList className={classes.items} items={this.props.items} />
           <ItemList className={classes.dynamic} items={this.props.dynamicItems} />
-          <ItemList className={classes.selected} items={this.props.selectedItems} />
+          <g transform={`translate(${this.props.translateSelectedItems.x},${this.props.translateSelectedItems.y})`} >
+            <ItemList className={classes.selected} items={this.props.selectedItems} />
+          </g>
         </SvgCanvas>
         <PropertyBar items={this.props.selectedItems} changeValue={this.props.changeSelectedItem} />
       </div>
@@ -93,7 +96,8 @@ const mapStateToProps = state => {
     items: state.page.items,
     dynamicItems: state.page.dynamicItems,
     selectedItems: state.page.selectedItems,
-    status: state.status.status
+    status: state.status.status,
+    translateSelectedItems: state.page.translateSelectedItems
   }
 }
 

@@ -10,6 +10,16 @@ class ItemRectangle extends ItemBase {
     this.p2 = p2 || new Point()
   }
 
+
+  clone() {
+    const newRectangle = new ItemRectangle()
+    const clone = JSON.parse(JSON.stringify(this))
+    Object.assign(newRectangle, clone);
+    newRectangle.p1 = this.p1.clone();
+    newRectangle.p2 = this.p2.clone();
+    return newRectangle
+  }
+
   move(delta) {
     this.p1 = this.p1.add(delta);
     this.p2 = this.p2.add(delta);

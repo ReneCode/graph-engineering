@@ -11,18 +11,19 @@ class ItemLine extends ItemBase {
     this.p2 = p2 || new Point();
   }
 
-  // clone() {
-  //   const newLine = new ItemLine()
-  //   const clone = JSON.parse(JSON.stringify(this))
-  //   Object.assign(newLine, clone);
-  //   newLine.p1 = this.p1.clone();
-  //   newLine.p2 = this.p2.clone();
-  //   return newLine
-  // }
+  clone() {
+    const newLine = new ItemLine()
+    const clone = JSON.parse(JSON.stringify(this))
+    Object.assign(newLine, clone);
+    newLine.p1 = this.p1.clone();
+    newLine.p2 = this.p2.clone();
+    return newLine
+  }
 
   move(delta) {
     this.p1 = this.p1.add(delta);
     this.p2 = this.p2.add(delta);
+    return this;
   }
 
   setFromTwoPoints(p1, p2) {

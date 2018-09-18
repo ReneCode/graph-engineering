@@ -56,6 +56,13 @@ export const moveSelectedItems = (delta) => {
   }
 }
 
+export const translateSelectedItems = (delta) => {
+  return {
+    type: actionTypes.TRANSLATE_SELECTED_ITEMS,
+    payload: delta
+  }
+}
+
 // export const unGroupSelectedItems = () => {
 //   return {
 //     type: actionTypes.UNGROUP_SELECTED_ITEMS
