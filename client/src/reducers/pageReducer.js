@@ -60,7 +60,7 @@ const selectItem = (state, action) => {
   if (action.item) {
     return {
       ...state,
-      items: state.items.filter(item => selectedItems.indexOf(item) < 0),
+      items: state.items.filter(item => item !== action.item),
       selectedItems: selectedItems
     }
   }
