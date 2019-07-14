@@ -36,11 +36,11 @@ const theme = createMuiTheme({
 });
 
 const App = () => (
-  <MuiThemeProvider theme={theme}>
+  // <MuiThemeProvider theme={theme}>
     <Provider store={ store }>
       <MainFrame />
     </Provider>
-  </MuiThemeProvider>
+  // </MuiThemeProvider>
 )
 
 export default App

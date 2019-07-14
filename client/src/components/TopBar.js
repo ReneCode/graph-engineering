@@ -1,19 +1,21 @@
 
 import React from "react";
-import { withRouter }  from 'react-router-dom';
-import Typography from 'material-ui/Typography'
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar/Toolbar';
-import { withStyles } from 'material-ui/styles'
-import IconButton from 'material-ui/IconButton';
-import HomeIcon from 'material-ui-icons/Home';
+import { withRouter } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar';
+import { withStyles } from '@material-ui/core/styles'
+import IconButton from '@material-ui/core/IconButton';
+import HomeIcon from '@material-ui/icons/Home';
+import MenuIcon from '@material-ui/icons/Menu';
+import Button from '@material-ui/core/Button';
 
 const style = theme => ({
   root: {
     width: '100%',
   },
-  flex: {
-    flex: 1,
+  grow: {
+    flexGrow: 1,
   },
 });
 
@@ -24,13 +26,13 @@ const TopBar = (props) => {
     <AppBar position="static">
       <Toolbar>
         <IconButton color="inherit" onClick={() => props.history.push("/")} aria-label="Home">
-          <HomeIcon />
+          <MenuIcon />
         </IconButton>
-        <Typography type="title" color="inherit" noWrap className={classes.flex}>
+        <Typography type="title" color="inherit" noWrap className={classes.grow}>
           Graph Engineering
-      </Typography>
-        {props.children}
+        </Typography>
       </Toolbar>
+      <Button color="inherit">Login</Button>
     </AppBar>
   );
 }

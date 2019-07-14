@@ -5,10 +5,12 @@ import { withStyles } from "@material-ui/core/styles";
 
 import Routing from "./Routing"
 import Notifications from "./Notifications"
+import TopBar from "./TopBar";
+import SiedebarLeft from "./SidebarLeft";
 
 const styles = {
   root: {
-    width: '100%',
+    flexGrow: 1
   }
 }
 
